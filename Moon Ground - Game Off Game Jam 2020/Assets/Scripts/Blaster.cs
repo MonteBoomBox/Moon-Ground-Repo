@@ -10,14 +10,43 @@ public class Blaster : MonoBehaviour
     public Transform ShotPoint;
     public float bulletSpeed = 10f;
 
+    public int maxAmmo = 15;
+    private int currentAmmo;
+    public float reloadTime = 2f;
+    private bool isReloading = false;
+
+    public void Start()
+    {
+        currentAmmo = maxAmmo;
+    }
+
     public void Update()
     {
+        if (isReloading)
+        {
+            return;
+        }
+
+        if (currentAmmo <= 0)
+        {
+            StartCoroutine(Reload());
+            return;
+        }
+
         RotateBlaster();
 
         if (Input.GetMouseButtonDown(0))
         {
             Shoot();
         }
+    }
+
+    IEnumerator Reload()
+    {
+        isReloading = true;
+        yield return new WaitForSeconds(reloadTime);
+        currentAmmo = maxAmmo;
+        isReloading = false;    
     }
 
     public void RotateBlaster()
@@ -29,6 +58,7 @@ public class Blaster : MonoBehaviour
 
     public void Shoot()
     {
+        currentAmmo--;
         GameObject bulletClone = Instantiate(bulletPrefab, ShotPoint.position, ShotPoint.rotation);
         Rigidbody2D rb = bulletClone.GetComponent<Rigidbody2D>();
         rb.velocity = ShotPoint.right * bulletSpeed;
