@@ -58,6 +58,7 @@ public class Blaster : MonoBehaviour
 
     public void Shoot()
     {
+        FindObjectOfType<AudioManager>().PlaySound("BlasterShoot");
         currentAmmo--;
         GameObject bulletClone = Instantiate(bulletPrefab, ShotPoint.position, ShotPoint.rotation);
         Rigidbody2D rb = bulletClone.GetComponent<Rigidbody2D>();

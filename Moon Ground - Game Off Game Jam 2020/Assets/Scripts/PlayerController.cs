@@ -87,6 +87,15 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    public void OnCollisionEnter2D(Collision2D HitInfo)
+    {
+        if (HitInfo.gameObject.CompareTag("Finish"))
+        {
+            Debug.Log("You Finished!");
+            FindObjectOfType<AudioManager>().PlaySound("WinSound");
+        }
+    }
+
     public void Flip()
     {
         transform.Rotate(0f, 180f, 0f);
