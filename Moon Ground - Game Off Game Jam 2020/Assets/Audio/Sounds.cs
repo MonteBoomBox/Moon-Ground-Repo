@@ -18,4 +18,6 @@ public class Sound
     public AudioSource source;
 
     public bool PlayOnAwake;
+
+    public bool Loop;
 }

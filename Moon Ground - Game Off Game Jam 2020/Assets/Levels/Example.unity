@@ -254,12 +254,21 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     PlayOnAwake: 0
+    Loop: 0
   - name: WinSound
     clip: {fileID: 8300000, guid: b15473ea85c8242729247eafe9100079, type: 3}
-    volume: 0.4
+    volume: 0.6
     pitch: 1
     source: {fileID: 0}
     PlayOnAwake: 0
+    Loop: 0
+  - name: BGM
+    clip: {fileID: 8300000, guid: 78d2cfcce81b246179f04eb14eb3a2da, type: 3}
+    volume: 0.35
+    pitch: 1
+    source: {fileID: 0}
+    PlayOnAwake: 0
+    Loop: 1
 --- !u!4 &166606547
 Transform:
   m_ObjectHideFlags: 0

@@ -16,12 +16,25 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.playOnAwake = s.PlayOnAwake;
+            s.source.loop = s.Loop;
         }
+    }
+
+    public void Start()
+    {
+        FindObjectOfType<AudioManager>().PlaySound("BGM");
     }
 
     public void PlaySound(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
+
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+
         s.source.Play();
     }
 }
