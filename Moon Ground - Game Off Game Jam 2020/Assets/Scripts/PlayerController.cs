@@ -131,4 +131,20 @@ public class PlayerController : MonoBehaviour
     {
         rb.velocity = Vector2.down * JumpForce;
     }
+
+    public void PlayStepSound1()
+    {
+        if (isGrounded == true)
+        {
+            FindObjectOfType<AudioManager>().PlaySound("PlayerStep1");
+        }        
+    }
+
+    public void PlayStepSound2()
+    {
+        if (isGrounded == true)
+        {
+            FindObjectOfType<AudioManager>().PlaySound("PlayerStep2");
+        }
+    }
 }
