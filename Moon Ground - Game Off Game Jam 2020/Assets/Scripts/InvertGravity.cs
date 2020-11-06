@@ -21,13 +21,17 @@ public class InvertGravity : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             GravityInverted = true;
+            FindObjectOfType<AudioManager>().PlaySound("InvertGravity");
             rb.gravityScale = -1;
+            transform.Rotate(0f, 180f, 180f);
         }
 
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             GravityInverted = false;
+            FindObjectOfType<AudioManager>().PlaySound("NormalizeGravity");
             rb.gravityScale = 1;
+            transform.Rotate(0f, 180f, 180f);
         }
 
     }

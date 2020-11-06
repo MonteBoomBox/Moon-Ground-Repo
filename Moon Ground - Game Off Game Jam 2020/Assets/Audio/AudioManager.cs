@@ -22,7 +22,7 @@ public class AudioManager : MonoBehaviour
 
     public void Start()
     {
-        FindObjectOfType<AudioManager>().PlaySound("BGM");
+        PlaySound("BGM");
     }
 
     public void PlaySound(string name)

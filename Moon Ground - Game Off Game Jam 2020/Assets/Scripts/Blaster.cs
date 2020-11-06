@@ -43,6 +43,7 @@ public class Blaster : MonoBehaviour
 
     IEnumerator Reload()
     {
+        FindObjectOfType<AudioManager>().PlaySound("BlasterReload");
         isReloading = true;
         yield return new WaitForSeconds(reloadTime);
         currentAmmo = maxAmmo;

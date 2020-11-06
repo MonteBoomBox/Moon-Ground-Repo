@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class PlayerController : MonoBehaviour
 
     InvertGravity Gravity;
 
+    public Animator playerAnimator;
+
     public void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -34,6 +37,9 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
         moveInput = Input.GetAxis("Horizontal");
+
+        playerAnimator.SetFloat("Speed", Mathf.Abs(moveInput));
+
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
 
         if (facingRight == false && moveInput > 0)
@@ -51,6 +57,8 @@ public class PlayerController : MonoBehaviour
 
     public void Update()
     {
+        
+
         if (isGrounded == true)
         {
             extraJumps = 2;
@@ -94,10 +102,23 @@ public class PlayerController : MonoBehaviour
             Debug.Log("You Finished!");
             FindObjectOfType<AudioManager>().PlaySound("WinSound");
         }
+
+        else if (HitInfo.gameObject.CompareTag("Respawn"))
+        {
+            Debug.Log("You Died!");
+            FindObjectOfType<AudioManager>().PlaySound("PlayerDeath");
+            Invoke("LoadSameLevel", 3.5f);
+        }
+    }
+
+    public void LoadSameLevel()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void Flip()
     {
+        facingRight = !facingRight;
         transform.Rotate(0f, 180f, 0f);
     }
 

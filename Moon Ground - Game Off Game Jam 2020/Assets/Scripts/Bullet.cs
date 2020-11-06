@@ -10,6 +10,11 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        else if (HitInfo.gameObject.CompareTag("Reflector"))
+        {
+            GetComponent<CircleCollider2D>().isTrigger = false;
+        }
     }
 
     public void OnBecameInvisible()
