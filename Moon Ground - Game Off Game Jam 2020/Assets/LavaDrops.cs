@@ -15,32 +15,52 @@ public class LavaDrops : MonoBehaviour
     public float respawnTime = 1f;
 
     public GameObject lavaDropPrefab;
+    GameObject newLavaDrop;
 
     private bool hasStartedCoroutine = false;
 
-    public void Start()
-    {
-        gravity = GetComponent<InverseGrav>();
+    private float inversedGravScale = -1f;
+    private float normalizedGravScale = 1f;
 
-        RandomSpawnPos = new Vector2(Random.Range(25, 50), transform.position.y + YOffset);
+    public Transform leftMostPos;
+    public Transform rightMostPos;
+
+    IEnumerator LavaDrop;
+
+    public void Start()
+    {    
+        gravity = this.GetComponent<InverseGrav>();
+        RandomSpawnPos.x = Random.Range(25, 50);
+        LavaDrop = LavaDropsWave();
     }
 
     public void Update()
     {
-        if (gravity.gravityInversed == true)
+        if (InverseGrav.gravityInversed == true)
         {
-            if (!hasStartedCoroutine)
+            if (hasStartedCoroutine == false)
             {
-                StartCoroutine(LavaDropsWave());
-                hasStartedCoroutine = true;                
+                StartCoroutine(LavaDrop);
+                hasStartedCoroutine = true;
             }
         }
 
-        else if (gravity.gravityInversed == false)
+        else if (InverseGrav.gravityInversed == false)
         {
-            Debug.Log("STOP!");
-            StopCoroutine(LavaDropsWave());
+            if (hasStartedCoroutine == true)
+            {
+                StopCoroutine(LavaDrop);
+                hasStartedCoroutine = false;
+            }            
         }
+    }
+    
+    public void SpawnLavaDrop()
+    {
+        newLavaDrop = Instantiate(lavaDropPrefab) as GameObject;
+        newLavaDrop.transform.position = new Vector2(Random.Range(leftMostPos.position.x, rightMostPos.position.x), transform.position.y);
+        Rigidbody2D rb = newLavaDrop.GetComponent<Rigidbody2D>();
+        rb.gravityScale = inversedGravScale;
     }
 
     IEnumerator LavaDropsWave()
@@ -52,10 +72,4 @@ public class LavaDrops : MonoBehaviour
         }
     }
 
-    public void SpawnLavaDrop()
-    {
-        GameObject newLavaDrop = Instantiate(lavaDropPrefab, RandomSpawnPos, transform.rotation) as GameObject;
-        newLavaDrop.GetComponent<Rigidbody2D>().velocity = Vector2.up * moveSpeed;
-    }
-    
 }
