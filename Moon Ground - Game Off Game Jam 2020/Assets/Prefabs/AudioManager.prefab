@@ -107,3 +107,10 @@ MonoBehaviour:
     source: {fileID: 0}
     PlayOnAwake: 0
     Loop: 0
+  - name: ReflectorClank
+    clip: {fileID: 8300000, guid: 974b5909ce84145448ff61d5325db5ff, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    PlayOnAwake: 0
+    Loop: 0
