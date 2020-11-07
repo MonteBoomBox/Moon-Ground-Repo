@@ -5,7 +5,7 @@ using UnityEngine;
 public class InverseGrav : MonoBehaviour
 {
 
-    public bool gravityInversed = false;    
+    public static bool gravityInversed = false;    
 
     // Update is called once per frame
     void Update()
