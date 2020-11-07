@@ -26,10 +26,18 @@ public class PlayerController : MonoBehaviour
 
     public Animator playerAnimator;
 
+    //public GameObject LavaDropPrefab;
+    //public float respawnTime;
+    //public float dropForce = 5f;
+
+    //Vector2 RandomSpawnPos;
+
     public void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         Gravity = GetComponent<InvertGravity>();
+
+        //RandomSpawnPos = new Vector2(Random.Range(25, 50), -13.7f);
     }
 
     public void FixedUpdate()
@@ -66,6 +74,8 @@ public class PlayerController : MonoBehaviour
 
         if (Gravity.GravityInverted == false)
         {
+            //StopCoroutine(LavaDropsWave());
+
             if (Input.GetButtonDown("Jump") && extraJumps > 0)
             {
                 Jump();
@@ -80,6 +90,8 @@ public class PlayerController : MonoBehaviour
 
         else if (Gravity.GravityInverted == true)
         {
+            //StartCoroutine(LavaDropsWave());
+
             if (Input.GetButtonDown("Jump") && extraJumps > 0)
             {
                 JumpInverted();
@@ -95,7 +107,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    public void OnCollisionEnter2D(Collision2D HitInfo)
+    public void OnCollisionEnter2D(Collision2D HitInfo) // Collision Detection
     {
         if (HitInfo.gameObject.CompareTag("Finish"))
         {
@@ -108,6 +120,12 @@ public class PlayerController : MonoBehaviour
             Debug.Log("You Died!");
             FindObjectOfType<AudioManager>().PlaySound("PlayerDeath");
             Invoke("LoadSameLevel", 3.5f);
+        }
+
+        else if (HitInfo.gameObject.CompareTag("Lava"))
+        {
+            Debug.Log("You fell in the lava!");
+            SceneManager.LoadScene(1);
         }
     }
 
@@ -144,7 +162,21 @@ public class PlayerController : MonoBehaviour
     {
         if (isGrounded == true)
         {
-            FindObjectOfType<AudioManager>().PlaySound("PlayerStep2");
+            FindObjectOfType<AudioManager>().PlaySound("PlayerStep2");  
         }
     }
+
+    //IEnumerator LavaDropsWave()
+    //{
+    //    GameObject Lava = GameObject.FindGameObjectWithTag("Lava");
+    //    GameObject newLavaDrop = Instantiate(LavaDropPrefab, RandomSpawnPos, Lava.transform.rotation);
+    //    yield return new WaitForSeconds(respawnTime);
+    //    SpawnNewLavaDrop(Lava.transform);        
+    //    newLavaDrop.GetComponent<Rigidbody2D>().velocity = Vector2.up * dropForce;
+    //}
+
+    //public void SpawnNewLavaDrop(Transform spawnPos)
+    //{
+    //    GameObject newLavaDrop = Instantiate(LavaDropPrefab, RandomSpawnPos, spawnPos.rotation);
+    //}
 }

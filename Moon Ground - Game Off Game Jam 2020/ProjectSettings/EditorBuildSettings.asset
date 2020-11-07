@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Example.unity
     guid: 39ec1d8695822433ebb9b48bccab8fbb
+  - enabled: 1
+    path: Assets/Levels/Lava Mechanic.unity
+    guid: 7dd2a9871584346cfa8f00faaf6bd5c1
   m_configObjects: {}
