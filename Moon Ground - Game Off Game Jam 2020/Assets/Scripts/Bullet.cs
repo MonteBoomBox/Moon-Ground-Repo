@@ -14,6 +14,7 @@ public class Bullet : MonoBehaviour
         else if (HitInfo.gameObject.CompareTag("Reflector"))
         {
             GetComponent<CircleCollider2D>().isTrigger = false;
+            FindObjectOfType<AudioManager>().PlaySound("ReflectorClank");
         }
     }
 
