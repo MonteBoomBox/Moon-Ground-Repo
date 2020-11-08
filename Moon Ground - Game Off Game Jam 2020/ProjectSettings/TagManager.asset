@@ -7,6 +7,10 @@ TagManager:
   - Ground
   - Reflector
   - Lava
+  - EntryBluePort
+  - ExitBluePort
+  - ExitRedPort
+  - EntryRedPort
   layers:
   - Default
   - TransparentFX
