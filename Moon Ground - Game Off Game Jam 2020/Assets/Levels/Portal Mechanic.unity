@@ -328,8 +328,8 @@ GameObject:
   - component: {fileID: 586391195}
   - component: {fileID: 586391194}
   m_Layer: 0
-  m_Name: EntryBluePort
-  m_TagString: Untagged
+  m_Name: BluePortal
+  m_TagString: BlueIn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -346,9 +346,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172f27ed1f862465a93e37512bc02e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBlue: 1
-  isRed: 0
-  distanceToPortal: 0.3
+  distanceToPortal: 0.4
+  Player: {fileID: 2132809337}
 --- !u!50 &586391195
 Rigidbody2D:
   serializedVersion: 4
@@ -443,7 +442,7 @@ Transform:
   m_GameObject: {fileID: 586391193}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.1, y: -0.88, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -462,8 +461,8 @@ GameObject:
   - component: {fileID: 868014975}
   - component: {fileID: 868014974}
   m_Layer: 0
-  m_Name: EntryRedPort
-  m_TagString: Untagged
+  m_Name: RedPortal
+  m_TagString: RedIn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -480,9 +479,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172f27ed1f862465a93e37512bc02e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBlue: 0
-  isRed: 1
-  distanceToPortal: 0.3
+  distanceToPortal: 0.4
+  Player: {fileID: 2132809337}
 --- !u!50 &868014975
 Rigidbody2D:
   serializedVersion: 4
@@ -577,7 +575,7 @@ Transform:
   m_GameObject: {fileID: 868014973}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 26.4, y: -0.88, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
@@ -801,9 +799,10 @@ GameObject:
   - component: {fileID: 1760313360}
   - component: {fileID: 1760313359}
   - component: {fileID: 1760313358}
+  - component: {fileID: 1760313362}
   m_Layer: 0
-  m_Name: ExitBluePort
-  m_TagString: ExitBluePort
+  m_Name: GreenPortal
+  m_TagString: BlueOut
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -883,7 +882,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e8040df1ee0f849638321ae865e5e523, type: 3}
-  m_Color: {r: 0, g: 0.7810728, b: 0.9245283, a: 1}
+  m_Color: {r: 0.007843138, g: 0.8078432, b: 0.93725497, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -901,12 +900,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1760313357}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40.3, y: -0.88, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalPosition: {x: 40.3, y: 20, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1760313362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760313357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172f27ed1f862465a93e37512bc02e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceToPortal: 0.4
+  Player: {fileID: 2132809337}
 --- !u!1 &1881183315
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,9 +932,10 @@ GameObject:
   - component: {fileID: 1881183318}
   - component: {fileID: 1881183317}
   - component: {fileID: 1881183316}
+  - component: {fileID: 1881183320}
   m_Layer: 0
-  m_Name: ExitRedPort
-  m_TagString: ExitRedPort
+  m_Name: OrangePortal
+  m_TagString: RedOut
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1001,7 +1015,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e8040df1ee0f849638321ae865e5e523, type: 3}
-  m_Color: {r: 0.9254902, g: 0.12603992, b: 0, a: 1}
+  m_Color: {r: 0.9333334, g: 0.14509805, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1019,12 +1033,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1881183315}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.3, y: -0.88, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalPosition: {x: 2.3, y: 19.8, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1881183320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881183315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172f27ed1f862465a93e37512bc02e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceToPortal: 0.4
+  Player: {fileID: 2132809337}
 --- !u!1001 &1931989668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1176,6 +1204,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2132809337 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8023618251796192154, guid: 496ab5e68897a41eea8dbe9f9ed4d2ef,
+    type: 3}
+  m_PrefabInstance: {fileID: 13529335}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4139643600025197174
 PrefabInstance:
   m_ObjectHideFlags: 0
