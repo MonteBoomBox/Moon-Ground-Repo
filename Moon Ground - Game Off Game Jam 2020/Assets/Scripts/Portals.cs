@@ -9,6 +9,7 @@ public class Portals : MonoBehaviour
     public float distanceToPortal = 0.3f;
 
     public GameObject Player;
+    public GameObject bullet;
 
     string OutName = "Out";
     string InName = "In";
@@ -18,13 +19,7 @@ public class Portals : MonoBehaviour
     private float visibleAlphaValue = 1f;
     private float invisibleAlphaValue = 0f;
 
-
-    public void Start()
-    {
-
-    }
-
-    void OnTriggerEnter2D(Collider2D HitInfo)
+    public void OnTriggerEnter2D(Collider2D HitInfo)
     {
         if (HitInfo.gameObject.tag == "Player")
         {
@@ -32,7 +27,11 @@ public class Portals : MonoBehaviour
             TeleportPlayer();            
         }
 
-        
+        else if (HitInfo.gameObject.tag == "Bullet")
+        {
+            CheckPortalTag();
+            TeleportBullet();
+        }
 
     }
 
@@ -55,7 +54,7 @@ public class Portals : MonoBehaviour
         }
     }
 
-    public void TeleportPlayer()
+    public void TeleportPlayer() // This will teleport the Player from portal to portal
     {
         if (Vector2.Distance(transform.position, Player.transform.position) > distanceToPortal)
         {
@@ -65,7 +64,19 @@ public class Portals : MonoBehaviour
         }
     }
 
-    public void FadeOutPlayer()
+    public void TeleportBullet() // This will teleport the bullet from portal to portal
+    {
+        GameObject bulletFired = GameObject.FindGameObjectWithTag("Bullet");
+
+        if (Vector2.Distance(transform.position, bulletFired.transform.position) > distanceToPortal)
+        {
+            bulletFired.transform.position = new Vector2(destination.x, destination.y);
+        }
+    }
+
+
+    // This effect is unnoticable
+    public void FadeOutPlayer() 
     {
         SpriteRenderer PlayerAlpha = Player.GetComponent<SpriteRenderer>();
 

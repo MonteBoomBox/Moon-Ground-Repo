@@ -6,9 +6,7 @@ public class InvertGravity : MonoBehaviour
 {
     Rigidbody2D rb;
 
-    public bool GravityInverted = false;
-
-
+    public bool GravityInverted = false; // This will check whether the gravity is inverted or not
 
     void Start()
     {

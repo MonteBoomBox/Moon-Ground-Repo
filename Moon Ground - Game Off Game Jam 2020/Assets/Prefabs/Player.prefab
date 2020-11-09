@@ -214,7 +214,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 2824284655656917577, guid: 9398be8413cd64ede8b094bc57731d25,
     type: 3}
   ShotPoint: {fileID: 8023618250824458434}
-  bulletSpeed: 10
+  bulletSpeed: 20
   maxAmmo: 15
   reloadTime: 2
 --- !u!1 &8023618251796192154
@@ -232,6 +232,7 @@ GameObject:
   - component: {fileID: 8023618251796192153}
   - component: {fileID: 8023618251796192152}
   - component: {fileID: 8023618251796192155}
+  - component: {fileID: 435190980033914142}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -402,5 +403,23 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
-  extraJumpsValue: 0
+  extraJumpsValue: -1
+  PlayerHealth: {fileID: 0}
   playerAnimator: {fileID: 8023618251796192159}
+--- !u!114 &435190980033914142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8023618251796192154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83259235145e4d2196beefc6390f9c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  damageUnit: 10
+  regenTime: 0.5
+  ObjRenderer: {fileID: 8023618251796192156}

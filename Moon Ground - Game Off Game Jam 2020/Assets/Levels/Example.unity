@@ -1547,12 +1547,12 @@ PrefabInstance:
     - target: {fileID: 4531542628162236186, guid: 295d3c05fa97f4feab9ac9004c1f813a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -62.3
+      value: -62.38
       objectReference: {fileID: 0}
     - target: {fileID: 4531542628162236186, guid: 295d3c05fa97f4feab9ac9004c1f813a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -17.9
+      value: -15.88
       objectReference: {fileID: 0}
     - target: {fileID: 4531542628162236186, guid: 295d3c05fa97f4feab9ac9004c1f813a,
         type: 3}
@@ -1944,10 +1944,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5288462682557890412, guid: 70bb1ddfc64354dc8b9c65703bcd408e,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.049176693
+      objectReference: {fileID: 0}
+    - target: {fileID: 5288462682557890412, guid: 70bb1ddfc64354dc8b9c65703bcd408e,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 3.3216467
+      objectReference: {fileID: 0}
     - target: {fileID: 5288462682557890413, guid: 70bb1ddfc64354dc8b9c65703bcd408e,
         type: 3}
       propertyPath: m_Name
       value: Moon-Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 5288462682557890413, guid: 70bb1ddfc64354dc8b9c65703bcd408e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70bb1ddfc64354dc8b9c65703bcd408e, type: 3}

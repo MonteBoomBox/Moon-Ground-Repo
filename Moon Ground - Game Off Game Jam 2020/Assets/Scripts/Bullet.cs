@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    private int BounceCounter = 0;
+    public int BounceLimit = 3;
+
     public void OnTriggerEnter2D(Collider2D HitInfo)
     {
         if (HitInfo.gameObject.CompareTag("Ground"))
@@ -14,11 +17,27 @@ public class Bullet : MonoBehaviour
         else if (HitInfo.gameObject.CompareTag("Reflector"))
         {
             GetComponent<CircleCollider2D>().isTrigger = false;
-            FindObjectOfType<AudioManager>().PlaySound("ReflectorClank");
+            FindObjectOfType<AudioManager>().PlaySound("ReflectorClank");            
         }
     }
 
-    public void OnBecameInvisible()
+    public void Update()
+    {
+        if (BounceCounter >= BounceLimit)
+        {
+            Destroy(gameObject); // When the bounce counter reaches a certain limit, the bullet will get destroyed
+        }
+    }
+
+    public void OnCollisionEnter2D(Collision2D BulletCollider) // When the bullet touches anything that is tagged as "Ground", it will increment Boucne Counter by 1
+    {
+        if (BulletCollider.gameObject.CompareTag("Ground"))
+        {
+            BounceCounter += 1;
+        }        
+    }
+
+    public void OnBecameInvisible() // When the Bullet goes out of the Camera view, it will get destroyed.
     {
         Destroy(gameObject);
     }

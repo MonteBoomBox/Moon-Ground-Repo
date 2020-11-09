@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5288462682557890410}
   - component: {fileID: 5288462682557890411}
   - component: {fileID: 5288462682557890412}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Moon-Terrain
   m_TagString: Ground
   m_Icon: {fileID: 0}

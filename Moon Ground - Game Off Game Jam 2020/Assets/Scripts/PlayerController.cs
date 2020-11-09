@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public int extraJumpsValue;
 
     InvertGravity Gravity;
+    public Health PlayerHealth;
 
     public Animator playerAnimator;
 
@@ -119,7 +120,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("You Died!");
             FindObjectOfType<AudioManager>().PlaySound("PlayerDeath");
-            Invoke("LoadSameLevel", 3.5f);
+            PlayerHealth.KillPlayer();            
         }
 
         else if (HitInfo.gameObject.CompareTag("Lava"))

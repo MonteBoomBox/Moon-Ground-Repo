@@ -7,19 +7,11 @@ TagManager:
   - Ground
   - Reflector
   - Lava
-  - BlueStart
-  - BlueExit
-  - RedStart
-  - RedExit
-  - Blue
-  - BluePortal
-  - GreenPortal
-  - OrangePortal
-  - RedPortal
   - BlueIn
   - BlueOut
   - RedIn
   - RedOut
+  - Bullet
   layers:
   - Default
   - TransparentFX
