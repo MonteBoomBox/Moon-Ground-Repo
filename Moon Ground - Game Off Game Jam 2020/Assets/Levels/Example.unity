@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 202576213}
   - component: {fileID: 202576212}
   - component: {fileID: 202576211}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Moon-Terrain (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1958,11 +1958,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Moon-Terrain
-      objectReference: {fileID: 0}
-    - target: {fileID: 5288462682557890413, guid: 70bb1ddfc64354dc8b9c65703bcd408e,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70bb1ddfc64354dc8b9c65703bcd408e, type: 3}
