@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Blaster : MonoBehaviour
 {
@@ -11,17 +12,27 @@ public class Blaster : MonoBehaviour
     public float bulletSpeed = 10f;
 
     public int maxAmmo = 15;
-    private int currentAmmo;
+
+    [HideInInspector]
+    public int currentAmmo;
+
     public float reloadTime = 2f;
     private bool isReloading = false;
+
+    public GameObject AmmoDisplay;
+    TextMeshProUGUI CurrentAmmoCount;
+
 
     public void Start()
     {
         currentAmmo = maxAmmo;
+        CurrentAmmoCount = AmmoDisplay.GetComponent<TextMeshProUGUI>();
     }
 
     public void Update()
     {
+        DisplayCurrentAmmo();
+
         if (isReloading)
         {
             return;
@@ -39,6 +50,11 @@ public class Blaster : MonoBehaviour
         {
             Shoot();
         }
+    }
+
+    public void DisplayCurrentAmmo()
+    {
+        CurrentAmmoCount.text = currentAmmo.ToString();
     }
 
     IEnumerator Reload()

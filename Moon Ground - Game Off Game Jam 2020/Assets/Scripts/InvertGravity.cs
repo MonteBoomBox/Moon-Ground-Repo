@@ -4,33 +4,106 @@ using UnityEngine;
 
 public class InvertGravity : MonoBehaviour
 {
-    Rigidbody2D rb;
+    Rigidbody2D rb; // The RigidBody of the Player
 
     public bool GravityInverted = false; // This will check whether the gravity is inverted or not
 
-    void Start()
+    private bool AbilityIsReady; // Boolean to check whether the Gravity Inversion Ability is ready for use
+
+    public float abilityCooldown; // The amount of Cooldown
+
+    public void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        AbilityIsReady = true;
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            GravityInverted = true;
-            FindObjectOfType<AudioManager>().PlaySound("InvertGravity");
-            rb.gravityScale = -1;
-            transform.Rotate(0f, 180f, 180f);
+        if (Input.GetKeyDown(KeyCode.LeftShift)) // Starts Gravity Inversion
+        {                
+            if (AbilityIsReady)
+            {
+                FlipGravity();
+            }
+
+            else if (!AbilityIsReady)
+            {
+                // Do Nothing
+            }
         }
 
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        else if (Input.GetKeyUp(KeyCode.LeftShift)) // Stops Gravity Inversion
         {
-            GravityInverted = false;
-            FindObjectOfType<AudioManager>().PlaySound("NormalizeGravity");
-            rb.gravityScale = 1;
-            transform.Rotate(0f, 180f, 180f);
-        }
+            if (AbilityIsReady)
+            {
+                NormalizeGravity();
+                AbilityIsReady = false;
+                StartCoroutine("Cooldown");
+            }            
 
+            else if (!AbilityIsReady)
+            {
+                return; // Do Nothing
+            }            
+        }
     }
+
+    public void NormalizeGravity()
+    {
+        GravityInverted = false;
+        FindObjectOfType<AudioManager>().PlaySound("NormalizeGravity");
+        rb.gravityScale = 1;
+        transform.Rotate(0f, 180f, 180f);
+    }
+
+    public void FlipGravity()
+    {
+        GravityInverted = true;
+        FindObjectOfType<AudioManager>().PlaySound("InvertGravity");
+        rb.gravityScale = -1;
+        transform.Rotate(0f, 180f, 180f);
+    }
+
+    IEnumerator Cooldown()
+    {
+        yield return new WaitForSeconds(abilityCooldown);
+        AbilityIsReady = true;
+    }
+
+    //IEnumerator CooldownTimer()
+    //{
+    //    while (true)
+    //    {            
+    //        yield return new WaitForSeconds(waitingTime);
+    //        cooldownTimer += 1;
+    //        Debug.Log(cooldownTimer);
+    //    }
+
+    //}
+
+    //nextUse = Time.time + inversionRate;
+    //cooldownStarted = true;
+
+
+
+    //if (cooldownStarted)
+    //{
+    //    StartCoroutine(abilityCooldownTimer);
+
+    //    if (cooldownTimer >= cooldownTime)
+    //    {
+    //        NormalizeGravity();
+    //        Debug.Log("Stop Ability! Start Cooldown");
+    //        StopCoroutine(abilityCooldownTimer);
+    //        cooldownStarted = false;
+    //    }
+    //}
+
+    //else if (!cooldownStarted)
+    //{
+    //    StopCoroutine(abilityCooldownTimer);
+    //    cooldownStarted = false;
+    //}
 }
