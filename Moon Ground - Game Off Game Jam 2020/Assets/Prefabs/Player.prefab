@@ -216,7 +216,10 @@ MonoBehaviour:
   ShotPoint: {fileID: 8023618250824458434}
   bulletSpeed: 20
   maxAmmo: 15
+  currentAmmo: 0
   reloadTime: 2
+  AmmoDisplay: {fileID: 2017835246080999933, guid: 9749516f472ba4fbbbaa36c2381e1a47,
+    type: 3}
 --- !u!1 &8023618251796192154
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,13 +387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GravityInverted: 0
-  inverseGravLimit: 5
-  cooldownTime: 0
-  waitingTime: 5
-  inversionInput: 0
-  inversionRate: 5
-  abilityUseLimit: 10
-  cooldownLimit: 5
+  abilityCooldown: 0
 --- !u!114 &8023618251796192155
 MonoBehaviour:
   m_ObjectHideFlags: 0

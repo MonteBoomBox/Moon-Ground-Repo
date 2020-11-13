@@ -12,6 +12,7 @@ TagManager:
   - RedIn
   - RedOut
   - Bullet
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX

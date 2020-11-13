@@ -37,6 +37,16 @@ public class Health : MonoBehaviour
                 TakeDamage(damageUnit);
             }
         }
+
+        else if (Hit.gameObject.CompareTag("EnemyBullet"))
+        {
+            if (!isHit)
+            {
+                isHit = true;
+                StartCoroutine(SwitchColor());
+                TakeDamage(damageUnit);
+            }
+        }
     }
 
     public void TakeDamage(int damage)
