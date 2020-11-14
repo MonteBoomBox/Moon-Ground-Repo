@@ -27,26 +27,23 @@ public class InvertGravity : MonoBehaviour
             {
                 FlipGravity();
             }
-
-            else if (!AbilityIsReady)
-            {
-                // Do Nothing
-            }
         }
 
         else if (Input.GetKeyUp(KeyCode.LeftShift)) // Stops Gravity Inversion
         {
-            if (AbilityIsReady)
+            if (!AbilityIsReady)
+            {
+                return; // Do Nothing
+            }
+
+            else if (AbilityIsReady)
             {
                 NormalizeGravity();
                 AbilityIsReady = false;
                 StartCoroutine("Cooldown");
             }            
 
-            else if (!AbilityIsReady)
-            {
-                return; // Do Nothing
-            }            
+                        
         }
     }
 

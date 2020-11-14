@@ -181,12 +181,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f1e801184717479fa817d7996f0ac73, type: 3}
---- !u!1 &95524420 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7701371686148197559, guid: 069815ec93458476a85aef56e02773d7,
-    type: 3}
-  m_PrefabInstance: {fileID: 7701371686107273971}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &450307667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -940,16 +934,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8023618251538018348, guid: 496ab5e68897a41eea8dbe9f9ed4d2ef,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.077
-      objectReference: {fileID: 0}
-    - target: {fileID: 8023618251538018349, guid: 496ab5e68897a41eea8dbe9f9ed4d2ef,
-        type: 3}
-      propertyPath: AmmoDisplay
-      value: 
-      objectReference: {fileID: 95524420}
     - target: {fileID: 8023618251796192154, guid: 496ab5e68897a41eea8dbe9f9ed4d2ef,
         type: 3}
       propertyPath: m_Name

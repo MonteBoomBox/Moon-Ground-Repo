@@ -7,6 +7,9 @@ public class Bullet : MonoBehaviour
     private int BounceCounter = 0;
     public int BounceLimit = 3;
 
+    public int playerDamage;
+    public int enemyDamage;
+
     public void OnTriggerEnter2D(Collider2D HitInfo)
     {
         if (HitInfo.gameObject.CompareTag("Ground"))
@@ -18,6 +21,20 @@ public class Bullet : MonoBehaviour
         {
             GetComponent<CircleCollider2D>().isTrigger = false;
             FindObjectOfType<AudioManager>().PlaySound("ReflectorClank");            
+        }
+
+        else if (HitInfo.gameObject.CompareTag("Player"))
+        {
+            GameObject Player = GameObject.FindGameObjectWithTag("Player");
+            Health playerHealth = Player.GetComponent<Health>();
+            playerHealth.TakeDamage(playerDamage);
+        }
+
+        else if (HitInfo.gameObject.CompareTag("Enemy"))
+        {
+            GameObject Enemy = GameObject.FindGameObjectWithTag("Enemy");
+            EnemyHealth enemyHealth = Enemy.GetComponent<EnemyHealth>();
+            enemyHealth.TakeDamage(enemyDamage);
         }
     }
 
@@ -34,7 +51,29 @@ public class Bullet : MonoBehaviour
         if (BulletCollider.gameObject.CompareTag("Ground"))
         {
             BounceCounter += 1;
-        }        
+        }
+
+        else if (BulletCollider.gameObject.CompareTag("Reflector"))
+        {
+            FindObjectOfType<AudioManager>().PlaySound("ReflectorClank");
+            BounceCounter += 1;
+        }
+
+        else if (BulletCollider.gameObject.CompareTag("Player"))
+        {
+            GameObject Player = GameObject.FindGameObjectWithTag("Player");
+            Health playerHealth = Player.GetComponent<Health>();
+            playerHealth.TakeDamage(playerDamage);
+            Destroy(gameObject);
+        }
+
+        else if (BulletCollider.gameObject.CompareTag("Enemy"))
+        {
+            GameObject Enemy = GameObject.FindGameObjectWithTag("Enemy");
+            EnemyHealth enemyHealth = Enemy.GetComponent<EnemyHealth>();
+            enemyHealth.TakeDamage(enemyDamage);
+            Destroy(gameObject);
+        }
     }
 
     public void OnBecameInvisible() // When the Bullet goes out of the Camera view, it will get destroyed.
