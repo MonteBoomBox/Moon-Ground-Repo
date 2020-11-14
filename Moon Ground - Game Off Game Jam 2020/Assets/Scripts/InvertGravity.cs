@@ -41,9 +41,7 @@ public class InvertGravity : MonoBehaviour
                 NormalizeGravity();
                 AbilityIsReady = false;
                 StartCoroutine("Cooldown");
-            }            
-
-                        
+            }                                    
         }
     }
 

@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 7429037148100881486}
   m_Layer: 0
   m_Name: Blaster
-  m_TagString: Untagged
+  m_TagString: Blaster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,13 +150,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce6625813df7140b6bdcd15a50be3510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: 15
+  offset: 0
   bulletPrefab: {fileID: 2824284655656917577, guid: 9398be8413cd64ede8b094bc57731d25,
     type: 3}
-  ShotPoint: {fileID: 7429037147874917537}
   bulletSpeed: 20
-  maxAmmo: 15
-  currentAmmo: 0
-  reloadTime: 2
-  AmmoDisplay: {fileID: 2017835246080999933, guid: 9749516f472ba4fbbbaa36c2381e1a47,
+  shockBallPrefab: {fileID: 5338970028717389776, guid: 4f730c132ee3e45db88797ef41a78023,
     type: 3}
+  shockBallSpeed: 30
+  ShotPoint: {fileID: 7429037147874917537}
+  maxBulletAmmo: 15
+  maxShockBallAmmo: 10
+  currentBulletAmmo: 0
+  currentShockBallAmmo: 0
+  reloadTime: 2
+  BulletAmmoDisplay: {fileID: 0}
+  ShockBallAmmoDisplay: {fileID: 0}

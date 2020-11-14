@@ -7,41 +7,70 @@ public class Blaster : MonoBehaviour
 {
     public float offset;
 
+    int BulletToShoot;
+
     public GameObject bulletPrefab;
-    public Transform ShotPoint;
     public float bulletSpeed = 10f;
 
-    public int maxAmmo = 15;
+    public GameObject shockBallPrefab;
+    public float shockBallSpeed;
+
+    public Transform ShotPoint;
+    
+
+    public int maxBulletAmmo = 15;
+    public int maxShockBallAmmo = 10;
 
     [HideInInspector]
-    public int currentAmmo;
+    public int currentBulletAmmo;
+
+
+    public int currentShockBallAmmo;
 
     public float reloadTime = 2f;
     private bool isReloading = false;
 
-    public GameObject AmmoDisplay;
-    TextMeshProUGUI CurrentAmmoCount;
+    public GameObject BulletAmmoDisplay;
+    TextMeshProUGUI CurrentBulletAmmoCount;
+
+    public GameObject ShockBallAmmoDisplay;
+    TextMeshProUGUI CurrentShockBallAmmoCount;
+
+    GameObject AmmoDisplay;
+
+    private bool isAmmoBullet;
 
 
     public void Start()
     {
-        currentAmmo = maxAmmo;
-        CurrentAmmoCount = AmmoDisplay.GetComponent<TextMeshProUGUI>();
+        isAmmoBullet = true;
+        currentBulletAmmo = maxBulletAmmo;
+        CurrentBulletAmmoCount = BulletAmmoDisplay.GetComponent<TextMeshProUGUI>();
+        CurrentShockBallAmmoCount = ShockBallAmmoDisplay.GetComponent<TextMeshProUGUI>();
+        currentShockBallAmmo = 0;
     }
 
     public void Update()
     {
-        DisplayCurrentAmmo();
+        CheckAmmoChange();
+        DisplayCurrentBulletAmmo();
+        DisplayCurrentShockBallAmmo();
 
         if (isReloading)
         {
             return;
         }
 
-        if (currentAmmo <= 0)
+        if (currentBulletAmmo <= 0)
         {
             StartCoroutine(Reload());
             return;
+        }
+
+        if (currentShockBallAmmo <= 0)
+        {
+            Debug.Log("You ran out of Ammo!");
+            SwitchAmmoToBullet();
         }
 
         RotateBlaster();
@@ -52,9 +81,37 @@ public class Blaster : MonoBehaviour
         }
     }
 
-    public void DisplayCurrentAmmo()
+    public void DisplayCurrentBulletAmmo()
     {
-        CurrentAmmoCount.text = currentAmmo.ToString();
+        CurrentBulletAmmoCount.text = currentBulletAmmo.ToString();
+    }
+
+    public void DisplayCurrentShockBallAmmo()
+    {
+        CurrentShockBallAmmoCount.text = currentShockBallAmmo.ToString();
+    }
+
+    public void CheckAmmoChange()
+    {
+        if (Input.GetKeyUp(KeyCode.Alpha2))
+        {
+            SwitchAmmoToShockBall();
+        }
+
+        else if (Input.GetKeyUp(KeyCode.Alpha1))
+        {
+            SwitchAmmoToBullet();
+        }
+    }
+
+    public void SwitchAmmoToShockBall()
+    {
+        BulletToShoot = 2;
+    }
+
+    public void SwitchAmmoToBullet()
+    {
+        BulletToShoot = 1;
     }
 
     IEnumerator Reload()
@@ -62,7 +119,7 @@ public class Blaster : MonoBehaviour
         FindObjectOfType<AudioManager>().PlaySound("BlasterReload");
         isReloading = true;
         yield return new WaitForSeconds(reloadTime);
-        currentAmmo = maxAmmo;
+        currentBulletAmmo = maxBulletAmmo;
         isReloading = false;    
     }
 
@@ -75,11 +132,23 @@ public class Blaster : MonoBehaviour
 
     public void Shoot()
     {
-        FindObjectOfType<AudioManager>().PlaySound("BlasterShoot");
-        currentAmmo--;
-        GameObject bulletClone = Instantiate(bulletPrefab, ShotPoint.position, ShotPoint.rotation);
-        Rigidbody2D rb = bulletClone.GetComponent<Rigidbody2D>();
-        rb.velocity = ShotPoint.right * bulletSpeed;
+        if (BulletToShoot == 1)
+        {
+            FindObjectOfType<AudioManager>().PlaySound("BlasterShoot");
+            currentBulletAmmo--;
+            GameObject bulletClone = Instantiate(bulletPrefab, ShotPoint.position, ShotPoint.rotation);
+            Rigidbody2D rb = bulletClone.GetComponent<Rigidbody2D>();
+            rb.velocity = ShotPoint.right * bulletSpeed;
+        }
+
+        if (BulletToShoot == 2 && currentShockBallAmmo > 0)
+        {
+            FindObjectOfType<AudioManager>().PlaySound("BlasterShoot");
+            currentShockBallAmmo--;
+            GameObject bulletClone = Instantiate(shockBallPrefab, ShotPoint.position, ShotPoint.rotation);
+            Rigidbody2D rb = bulletClone.GetComponent<Rigidbody2D>();
+            rb.velocity = ShotPoint.right * bulletSpeed;
+        }
     }
 
 }

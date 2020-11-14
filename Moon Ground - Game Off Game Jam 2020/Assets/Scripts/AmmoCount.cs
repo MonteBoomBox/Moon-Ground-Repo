@@ -15,7 +15,7 @@ public class AmmoCount : MonoBehaviour
 
     void Start()
     {
-        currentAmmoCount = PlayerBlaster.GetComponent<Blaster>().currentAmmo;
+        currentAmmoCount = PlayerBlaster.GetComponent<Blaster>().currentBulletAmmo;
         displayAmmo = currentAmmoCount.ToString();
         AmmoCountDisplay = GetComponent<TextMeshProUGUI>();
     }
