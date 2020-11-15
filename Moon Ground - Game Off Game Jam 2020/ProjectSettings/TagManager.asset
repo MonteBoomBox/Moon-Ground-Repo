@@ -16,6 +16,8 @@ TagManager:
   - Enemy
   - ShockBall
   - Blaster
+  - Target
+  - GasBubble
   layers:
   - Default
   - TransparentFX
