@@ -6,28 +6,26 @@ public class GasPump : MonoBehaviour
 {
     public GameObject GasBubblePrefab;
     GameObject newGasBubble;
+
     public Transform spawnPoint;
     public Transform target;
 
     public float moveSpeed;
 
-    [SerializeField]
-    private Transform[] waypoints;
-    private int waypointIndex = 0;
+    //[SerializeField]
+    //private Transform[] waypoints;
+    //private int waypointIndex = 0;
     private bool movementStarted = false;
 
-    //Rigidbody2D rb;
+    //private float timeLeft;
+    //public float accelerationTime = 5f;
 
-    //public void FixedUpdate()
-    //{
-    //    Vector2 RandomizedMotion = new Vector2(Random.Range(-1, 1), Random.Range(-1, 1));
-    //    rb.AddForce(RandomizedMotion);
-    //}
+    //Rigidbody2D rb;
+    //Vector2
 
     public void SpawnGasBubble()
     {
         newGasBubble = Instantiate(GasBubblePrefab) as GameObject;
-        //rb = newGasBubble.GetComponent<Rigidbody2D>();
         movementStarted = true;
 
         //newGasBubble.transform.position = waypoints[waypointIndex].transform.position;
@@ -38,10 +36,32 @@ public class GasPump : MonoBehaviour
         if (movementStarted)
         {
             Move();
+
+            if (newGasBubble.transform.position == target.position)
+            {
+                Debug.Log("Destination reached!");
+                movementStarted = false;
+                Destroy(newGasBubble); 
+            }
         }
+
+        
     }
 
-    
+    //public void RandomizeMotion()
+    //{
+    //    timeLeft -= Time.deltaTime;
+    //    if (timeLeft <= 0)
+    //    {
+    //        Vector2 RandomizedMotion = new Vector2(Random.Range(-1, 1), Random.Range(-1, 1));
+    //        timeLeft += accelerationTime;
+    //    }
+    //}
+
+    //public void FixedUpdate()
+    //{
+    //    rb.AddForce(RandomizedMotion * moveSpeed);
+    //}
 
     public void Move()
     {

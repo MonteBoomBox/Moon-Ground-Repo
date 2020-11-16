@@ -52,33 +52,36 @@ public class Blaster : MonoBehaviour
 
     public void Update()
     {
-        CheckAmmoChange();
-        DisplayCurrentBulletAmmo();
-        DisplayCurrentShockBallAmmo();
-
-        if (isReloading)
+        if (PauseMenu.GameIsPaused == false)
         {
-            return;
-        }
+            CheckAmmoChange();
+            DisplayCurrentBulletAmmo();
+            DisplayCurrentShockBallAmmo();
 
-        if (currentBulletAmmo <= 0)
-        {
-            StartCoroutine(Reload());
-            return;
-        }
+            if (isReloading)
+            {
+                return;
+            }
 
-        if (currentShockBallAmmo <= 0)
-        {
-            Debug.Log("You ran out of Ammo!");
-            SwitchAmmoToBullet();
-        }
+            if (currentBulletAmmo <= 0)
+            {
+                StartCoroutine(Reload());
+                return;
+            }
 
-        RotateBlaster();
+            if (currentShockBallAmmo <= 0)
+            {
+                Debug.Log("You ran out of Ammo!");
+                SwitchAmmoToBullet();
+            }
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            Shoot();
-        }
+            RotateBlaster();
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                Shoot();
+            }
+        }        
     }
 
     public void DisplayCurrentBulletAmmo()

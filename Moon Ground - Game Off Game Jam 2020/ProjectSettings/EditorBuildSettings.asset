@@ -9,9 +9,18 @@ EditorBuildSettings:
     path: Assets/Levels/Main Menu.unity
     guid: 2224b09af475343718051f552fe802f5
   - enabled: 1
+    path: Assets/Levels/Gas Pump Mechanic.unity
+    guid: 6ed4ab3b7fb8d48c298f6de1ff791787
+  - enabled: 1
     path: Assets/Levels/Example.unity
     guid: 39ec1d8695822433ebb9b48bccab8fbb
   - enabled: 1
     path: Assets/Levels/Lava Mechanic.unity
     guid: 7dd2a9871584346cfa8f00faaf6bd5c1
+  - enabled: 1
+    path: Assets/Levels/Enemy Mechanic.unity
+    guid: d19a5414d21464fbda0cfefa93370793
+  - enabled: 1
+    path: Assets/Levels/Portal Mechanic.unity
+    guid: 2900c9094e1c94686b6be513e30839c8
   m_configObjects: {}
