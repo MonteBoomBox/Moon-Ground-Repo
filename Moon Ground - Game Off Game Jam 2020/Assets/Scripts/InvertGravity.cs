@@ -10,44 +10,56 @@ public class InvertGravity : MonoBehaviour
 
     private bool AbilityIsReady; // Boolean to check whether the Gravity Inversion Ability is ready for use
 
+    private bool PlayerIsFlipped;
+
     public float abilityCooldown; // The amount of Cooldown
 
     public void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         AbilityIsReady = true;
+        PlayerIsFlipped = false;
     }
 
     // Update is called once per frame
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift)) // Starts Gravity Inversion
-        {                
-            if (AbilityIsReady)
-            {
-                FlipGravity();
-            }
+        if (AbilityIsReady && !PlayerIsFlipped)
+        {
+            CheckGravityInversionInput();
         }
 
-        else if (Input.GetKeyUp(KeyCode.LeftShift)) // Stops Gravity Inversion
+        else if (AbilityIsReady && PlayerIsFlipped)
         {
-            if (!AbilityIsReady)
-            {
-                return; // Do Nothing
-            }
+            CheckGravityNormalizeInput();
+        }        
+               
+    }
 
-            else if (AbilityIsReady)
-            {
-                NormalizeGravity();
-                AbilityIsReady = false;
-                StartCoroutine("Cooldown");
-            }                                    
+    public void CheckGravityInversionInput()
+    {
+        if (Input.GetKeyUp(KeyCode.LeftShift)) // Starts Gravity Inversion
+        {
+            FlipGravity();
+        }
+
+        
+    }
+
+    public void CheckGravityNormalizeInput()
+    {
+        if (Input.GetKeyUp(KeyCode.LeftShift)) // Stops Gravity Inversion
+        {
+            NormalizeGravity();
+            StartCoroutine("Cooldown");
         }
     }
 
     public void NormalizeGravity()
     {
         GravityInverted = false;
+        AbilityIsReady = false;
+        PlayerIsFlipped = false;
         FindObjectOfType<AudioManager>().PlaySound("NormalizeGravity");
         rb.gravityScale = 1;
         transform.Rotate(0f, 180f, 180f);
@@ -56,6 +68,7 @@ public class InvertGravity : MonoBehaviour
     public void FlipGravity()
     {
         GravityInverted = true;
+        PlayerIsFlipped = true;
         FindObjectOfType<AudioManager>().PlaySound("InvertGravity");
         rb.gravityScale = -1;
         transform.Rotate(0f, 180f, 180f);
