@@ -9,6 +9,12 @@ public class Enemy : MonoBehaviour
     public float fireRate;
     private float nextFire;
 
+    public float moveSpeed = 5f;
+
+    GameObject target;
+    Vector2 moveDirection;
+    Rigidbody2D rb;
+
 
     void Start()
     {
@@ -25,9 +31,18 @@ public class Enemy : MonoBehaviour
     {
         if (Time.time > nextFire)
         {
-            Instantiate(enemyBullet, transform.position, Quaternion.identity);
-            FindObjectOfType<AudioManager>().PlaySound("BlasterShoot");
+            Shoot();            
             nextFire = Time.time + fireRate;
         }
+    }
+
+    public void Shoot()
+    {
+        FindObjectOfType<AudioManager>().PlaySound("BlasterShoot");
+        GameObject newEnemyBullet = Instantiate(enemyBullet, transform.position, Quaternion.identity);
+        Rigidbody2D rb = newEnemyBullet.GetComponent<Rigidbody2D>();
+        target = GameObject.FindGameObjectWithTag("Player");
+        moveDirection = (target.transform.position - newEnemyBullet.transform.position).normalized * moveSpeed;
+        rb.velocity = new Vector2(moveDirection.x, moveDirection.y);
     }
 }

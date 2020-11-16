@@ -114,3 +114,10 @@ MonoBehaviour:
     source: {fileID: 0}
     PlayOnAwake: 0
     Loop: 0
+  - name: ShockBallShoot
+    clip: {fileID: 8300000, guid: aa7f46b36d3d04d4da194512d516f485, type: 3}
+    volume: 0.4
+    pitch: 1
+    source: {fileID: 0}
+    PlayOnAwake: 0
+    Loop: 0

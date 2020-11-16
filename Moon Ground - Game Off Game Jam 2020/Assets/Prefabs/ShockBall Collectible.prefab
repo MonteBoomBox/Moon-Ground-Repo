@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5035102662977773760}
   - component: {fileID: 9190928471113132181}
   - component: {fileID: 8297575534098151864}
-  - component: {fileID: 4906495458628139976}
+  - component: {fileID: 8747488916708566941}
   m_Layer: 0
-  m_Name: ShockBall
+  m_Name: ShockBall Collectible
   m_TagString: ShockBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,7 +120,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &4906495458628139976
+--- !u!114 &8747488916708566941
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6449918636388835788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e98cba0270a9f439996455ae2d6c1be7, type: 3}
+  m_Script: {fileID: 11500000, guid: fce804268147740dcb14fd8c8ae678f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8303939312775928489

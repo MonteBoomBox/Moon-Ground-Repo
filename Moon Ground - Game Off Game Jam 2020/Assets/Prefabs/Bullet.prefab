@@ -131,6 +131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9232f78861ca4421fa5844f4ba6cb1fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BounceLimit: 3
+  BounceLimit: 5
   playerDamage: 10
   enemyDamage: 20

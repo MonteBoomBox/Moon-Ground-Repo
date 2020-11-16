@@ -28,6 +28,7 @@ public class Bullet : MonoBehaviour
             GameObject Player = GameObject.FindGameObjectWithTag("Player");
             Health playerHealth = Player.GetComponent<Health>();
             playerHealth.TakeDamage(playerDamage);
+            Destroy(gameObject);
         }
 
         else if (HitInfo.gameObject.CompareTag("Enemy"))
@@ -35,6 +36,7 @@ public class Bullet : MonoBehaviour
             GameObject Enemy = GameObject.FindGameObjectWithTag("Enemy");
             EnemyHealth enemyHealth = Enemy.GetComponent<EnemyHealth>();
             enemyHealth.TakeDamage(enemyDamage);
+            Destroy(gameObject);
         }
     }
 

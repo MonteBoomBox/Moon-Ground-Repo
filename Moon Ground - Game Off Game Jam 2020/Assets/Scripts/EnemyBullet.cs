@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-
-    Rigidbody2D rb;
 
     GameObject target;
-    Vector2 moveDirection;
 
-    public int Damage;
+    public int playerDamage;
+    public int enemyDamage;
 
     private int BounceCounter = 0;
     public int BounceLimit = 3;
@@ -19,10 +16,7 @@ public class EnemyBullet : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("Player");
-        moveDirection = (target.transform.position - transform.position).normalized * moveSpeed;
-        rb.velocity = new Vector2(moveDirection.x, moveDirection.y);
     }
 
     public void Update()
@@ -35,10 +29,12 @@ public class EnemyBullet : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D HitInfo)
     {
+        GameObject Obj = HitInfo.gameObject;
+
         if (HitInfo.gameObject.CompareTag("Player"))
         {
             Health health = target.GetComponent<Health>();
-            health.TakeDamage(Damage);
+            health.TakeDamage(playerDamage);
             Destroy(gameObject);
         }
 
@@ -56,9 +52,30 @@ public class EnemyBullet : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D BulletCollider) // When the bullet touches anything that is tagged as "Ground", it will increment Boucne Counter by 1
     {
+        GameObject EnemyToDamage = BulletCollider.gameObject;
         if (BulletCollider.gameObject.CompareTag("Ground"))
         {
+            BounceCounter += 1;            
+        }
+
+        else if (BulletCollider.gameObject.CompareTag("Reflector"))
+        {
             BounceCounter += 1;
+            FindObjectOfType<AudioManager>().PlaySound("ReflectorClank");
+        }
+
+        else if (BulletCollider.gameObject.CompareTag("Player"))
+        {
+            Health health = target.GetComponent<Health>();
+            health.TakeDamage(playerDamage);
+            Destroy(gameObject);
+        }
+
+        else if (BulletCollider.gameObject.CompareTag("Enemy"))
+        {
+            EnemyHealth enemyHealth = EnemyToDamage.GetComponent<EnemyHealth>();
+            enemyHealth.TakeDamage(enemyDamage);
+            Destroy(gameObject);
         }
     }
 
@@ -66,4 +83,5 @@ public class EnemyBullet : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
 }

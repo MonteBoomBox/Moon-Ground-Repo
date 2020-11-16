@@ -135,7 +135,7 @@ public class Blaster : MonoBehaviour
 
     public void Shoot()
     {
-        if (BulletToShoot == 1)
+        if (BulletToShoot == 1) // Firing Regular Blaster
         {
             FindObjectOfType<AudioManager>().PlaySound("BlasterShoot");
             currentBulletAmmo--;
@@ -144,9 +144,9 @@ public class Blaster : MonoBehaviour
             rb.velocity = ShotPoint.right * bulletSpeed;
         }
 
-        if (BulletToShoot == 2 && currentShockBallAmmo > 0)
+        if (BulletToShoot == 2 && currentShockBallAmmo > 0) // Firing ShockBall
         {
-            FindObjectOfType<AudioManager>().PlaySound("BlasterShoot");
+            FindObjectOfType<AudioManager>().PlaySound("ShockBallShoot");
             currentShockBallAmmo--;
             GameObject bulletClone = Instantiate(shockBallPrefab, ShotPoint.position, ShotPoint.rotation);
             Rigidbody2D rb = bulletClone.GetComponent<Rigidbody2D>();
