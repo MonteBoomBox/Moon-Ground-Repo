@@ -25,6 +25,8 @@ public class Health : MonoBehaviour
     public GameObject HealthDisplay;
     TextMeshProUGUI CurrentHealthDisplay;
 
+    public ParticleSystem HitEffect;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -58,6 +60,8 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        ParticleSystem hit = Instantiate(HitEffect, transform.position, Quaternion.identity);
+        hit.Play();
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
     }

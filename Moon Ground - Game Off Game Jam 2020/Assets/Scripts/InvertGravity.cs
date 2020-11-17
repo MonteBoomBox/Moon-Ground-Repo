@@ -14,6 +14,9 @@ public class InvertGravity : MonoBehaviour
 
     public float abilityCooldown; // The amount of Cooldown
 
+    public ParticleSystem InversionEffect;
+    public ParticleSystem NormalizeEffect;
+
     public void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -57,6 +60,7 @@ public class InvertGravity : MonoBehaviour
 
     public void NormalizeGravity()
     {
+        PlayNormalizeEffect();
         GravityInverted = false;
         AbilityIsReady = false;
         PlayerIsFlipped = false;
@@ -67,11 +71,24 @@ public class InvertGravity : MonoBehaviour
 
     public void FlipGravity()
     {
+        PlayInversionEffect();
         GravityInverted = true;
         PlayerIsFlipped = true;
         FindObjectOfType<AudioManager>().PlaySound("InvertGravity");
         rb.gravityScale = -1;
         transform.Rotate(0f, 180f, 180f);
+    }
+
+    public void PlayInversionEffect()
+    {
+        ParticleSystem inversion = Instantiate(InversionEffect, transform.position, Quaternion.identity);
+        inversion.Play();
+    }
+
+    public void PlayNormalizeEffect()
+    {
+        ParticleSystem normalize = Instantiate(NormalizeEffect, transform.position, Quaternion.identity);
+        normalize.Play();
     }
 
     IEnumerator Cooldown()

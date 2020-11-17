@@ -228,6 +228,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GravityInverted: 0
   abilityCooldown: 5
+  InversionEffect: {fileID: 610221370416511345, guid: 8fab8244f0f9f422fb719b0aaa26c6b1,
+    type: 3}
+  NormalizeEffect: {fileID: 4632951850227251215, guid: 7454b12a1d59346c6bfe9d89fc5e1999,
+    type: 3}
 --- !u!114 &8023618251796192155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,6 +271,10 @@ MonoBehaviour:
   damageUnit: 10
   regenTime: 0.5
   ObjRenderer: {fileID: 8023618251796192156}
+  healthBar: {fileID: 0}
+  HealthDisplay: {fileID: 0}
+  HitEffect: {fileID: 5830325778583823445, guid: 0cf04109329ec4a7cbfa94af198ae9d1,
+    type: 3}
 --- !u!1001 &594655080347098211
 PrefabInstance:
   m_ObjectHideFlags: 0
