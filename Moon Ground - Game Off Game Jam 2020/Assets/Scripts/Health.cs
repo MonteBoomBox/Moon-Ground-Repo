@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Health : MonoBehaviour
 {
@@ -20,10 +21,16 @@ public class Health : MonoBehaviour
 
     private bool isHit = false;
 
+    public HealthBar healthBar;
+    public GameObject HealthDisplay;
+    TextMeshProUGUI CurrentHealthDisplay;
+
     void Start()
     {
         currentHealth = maxHealth;
         defaultColor = ObjRenderer.color;
+        healthBar.SetMaxHealth(maxHealth);
+        CurrentHealthDisplay = HealthDisplay.GetComponent<TextMeshProUGUI>();
     }
 
     public void OnCollisionEnter2D(Collision2D Hit)
@@ -52,6 +59,7 @@ public class Health : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
     }
 
     public void Update()
@@ -64,6 +72,13 @@ public class Health : MonoBehaviour
                 KillPlayer();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            TakeDamage(10);
+        }
+
+        CurrentHealthDisplay.text = currentHealth.ToString();
 
         
     }

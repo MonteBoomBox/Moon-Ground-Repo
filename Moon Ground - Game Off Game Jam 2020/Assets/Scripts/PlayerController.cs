@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour
         if (isGrounded == true)
         {
             extraJumps = 2;
+            playerAnimator.SetBool("isJumping", false);
         }
 
         if (Gravity.GravityInverted == false)
@@ -143,11 +144,13 @@ public class PlayerController : MonoBehaviour
 
     public void Jump()
     {
+        playerAnimator.SetBool("isJumping", true);
         rb.velocity = Vector2.up * JumpForce;       
     }
 
     public void JumpInverted()
     {
+        playerAnimator.SetBool("isJumping", true);
         rb.velocity = Vector2.down * JumpForce;
     }
 
