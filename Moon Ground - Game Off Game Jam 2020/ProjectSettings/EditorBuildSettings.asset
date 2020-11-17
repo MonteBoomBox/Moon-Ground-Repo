@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Portal Mechanic.unity
     guid: 2900c9094e1c94686b6be513e30839c8
+  - enabled: 1
+    path: Assets/Levels/Settings Menu.unity
+    guid: 863f3522c20ae4ee18398757a2568d19
   m_configObjects: {}
