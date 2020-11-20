@@ -24,12 +24,16 @@ public class PlayerController : MonoBehaviour
 
     InvertGravity Gravity;
     public Health PlayerHealth;
+    Blaster ShockBallAmmo;
 
     public Animator playerAnimator;
 
     Vector2 ScreenBounds;
 
     public float killDelay = 0.5f;
+
+    public string CurrentLevel;
+    public int currentShockballAMMO;
 
     //public GameObject LavaDropPrefab;
     //public float respawnTime;
@@ -43,7 +47,11 @@ public class PlayerController : MonoBehaviour
         Gravity = GetComponent<InvertGravity>();
         ScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
 
+        CurrentLevel = SceneManager.GetActiveScene().buildIndex.ToString();
+        currentShockballAMMO = ShockBallAmmo.currentShockBallAmmo;
         //RandomSpawnPos = new Vector2(Random.Range(25, 50), -13.7f);
+
+        LoadPlayerData();
     }
 
     public void FixedUpdate()
@@ -172,6 +180,25 @@ public class PlayerController : MonoBehaviour
         {
             FindObjectOfType<AudioManager>().PlaySound("PlayerStep2");  
         }
+    }
+
+    public void OnApplicationQuit()
+    {
+        SavePlayerData();
+    } 
+
+    public void SavePlayerData()
+    {
+        SaveSystem.SavePlayer(this);
+        Debug.Log("Player data saved");
+    }
+
+    public void LoadPlayerData()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+
+        CurrentLevel = data.currentLevel;
+        currentShockballAMMO = data.currentShockBallAmmo;
     }
 
     //IEnumerator LavaDropsWave()
