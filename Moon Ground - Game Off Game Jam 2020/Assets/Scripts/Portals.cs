@@ -19,6 +19,8 @@ public class Portals : MonoBehaviour
     private float visibleAlphaValue = 1f;
     private float invisibleAlphaValue = 0f;
 
+    public float rotateSpeed = 15f;
+
     public void OnTriggerEnter2D(Collider2D HitInfo)
     {
         if (HitInfo.gameObject.tag == "Player")
@@ -72,6 +74,16 @@ public class Portals : MonoBehaviour
         {
             bulletFired.transform.position = new Vector2(destination.x, destination.y);
         }
+    }
+
+    public void Update()
+    {
+        RotatePortal();
+    }
+
+    public void RotatePortal()
+    {
+        transform.Rotate(Vector3.back, rotateSpeed * Time.deltaTime);
     }
 
 
