@@ -27,6 +27,10 @@ public class PlayerController : MonoBehaviour
 
     public Animator playerAnimator;
 
+    Vector2 ScreenBounds;
+
+    public float killDelay = 0.5f;
+
     //public GameObject LavaDropPrefab;
     //public float respawnTime;
     //public float dropForce = 5f;
@@ -37,6 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         Gravity = GetComponent<InvertGravity>();
+        ScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
 
         //RandomSpawnPos = new Vector2(Random.Range(25, 50), -13.7f);
     }
@@ -66,7 +71,6 @@ public class PlayerController : MonoBehaviour
 
     public void Update()
     {
-        
 
         if (isGrounded == true)
         {
@@ -107,6 +111,11 @@ public class PlayerController : MonoBehaviour
         }
 
         
+    }
+
+    public void OnBecameInvisible()
+    {
+        PlayerHealth.KillPlayer();
     }
 
     public void OnCollisionEnter2D(Collision2D HitInfo) // Collision Detection
