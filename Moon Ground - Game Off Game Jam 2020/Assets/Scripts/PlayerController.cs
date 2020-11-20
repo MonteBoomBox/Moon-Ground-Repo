@@ -113,11 +113,6 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    public void OnBecameInvisible()
-    {
-        PlayerHealth.KillPlayer();
-    }
-
     public void OnCollisionEnter2D(Collision2D HitInfo) // Collision Detection
     {
         if (HitInfo.gameObject.CompareTag("Finish"))
