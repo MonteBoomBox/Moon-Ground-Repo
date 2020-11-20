@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GravityInverted: 0
-  abilityCooldown: 5
+  abilityCooldown: 2
   InversionEffect: {fileID: 610221370416511345, guid: 8fab8244f0f9f422fb719b0aaa26c6b1,
     type: 3}
   NormalizeEffect: {fileID: 4632951850227251215, guid: 7454b12a1d59346c6bfe9d89fc5e1999,

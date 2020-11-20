@@ -35,7 +35,7 @@ public class InvertGravity : MonoBehaviour
         else if (AbilityIsReady && PlayerIsFlipped)
         {
             CheckGravityNormalizeInput();
-        }        
+        }
                
     }
 
@@ -82,13 +82,17 @@ public class InvertGravity : MonoBehaviour
     public void PlayInversionEffect()
     {
         ParticleSystem inversion = Instantiate(InversionEffect, transform.position, Quaternion.identity);
-        inversion.Play();
+
+        if (inversion.isStopped)
+        {
+            Destroy(inversion);
+        }        
     }
 
     public void PlayNormalizeEffect()
     {
         ParticleSystem normalize = Instantiate(NormalizeEffect, transform.position, Quaternion.identity);
-        normalize.Play();
+        Destroy(normalize, 1f);
     }
 
     IEnumerator Cooldown()
