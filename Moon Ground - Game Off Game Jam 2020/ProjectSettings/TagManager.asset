@@ -18,6 +18,7 @@ TagManager:
   - Blaster
   - Target
   - GasBubble
+  - Colour+InOROut
   layers:
   - Default
   - TransparentFX

@@ -8,7 +8,7 @@ public class InvertGravity : MonoBehaviour
 
     public bool GravityInverted = false; // This will check whether the gravity is inverted or not
 
-    private bool AbilityIsReady; // Boolean to check whether the Gravity Inversion Ability is ready for use
+    public static bool AbilityIsReady; // Boolean to check whether the Gravity Inversion Ability is ready for use
 
     private bool PlayerIsFlipped;
 

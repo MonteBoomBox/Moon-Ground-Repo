@@ -5,19 +5,41 @@ using UnityEngine;
 public class InverseGrav : MonoBehaviour
 {
 
-    public static bool gravityInversed = false;    
+    public static bool gravityInversed = false;
+
+    private bool PlayerIsFlipped;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (InvertGravity.AbilityIsReady && !PlayerIsFlipped)
         {
-            gravityInversed = true;
+            CheckForInversionInput();
         }
 
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        else if (InvertGravity.AbilityIsReady && PlayerIsFlipped)
+        {
+            CheckForNormalizeInput();
+        }
+
+        
+    }    
+
+    void CheckForInversionInput()
+    {
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            gravityInversed = true;
+            PlayerIsFlipped = true;
+        }
+    }
+
+    void CheckForNormalizeInput()
+    {
+        if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             gravityInversed = false;
+            PlayerIsFlipped = false;
         }
     }
 }
