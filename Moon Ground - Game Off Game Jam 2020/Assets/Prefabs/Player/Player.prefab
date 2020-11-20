@@ -91,7 +91,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8023618251796192154}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -47.85, y: -2.13, z: 0}
+  m_LocalPosition: {x: 26.9, y: 20.6, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 8023618249711849271}
@@ -254,6 +254,7 @@ MonoBehaviour:
   extraJumpsValue: -2
   PlayerHealth: {fileID: 435190980033914142}
   playerAnimator: {fileID: 8023618251796192159}
+  killDelay: 0.5
 --- !u!114 &435190980033914142
 MonoBehaviour:
   m_ObjectHideFlags: 0

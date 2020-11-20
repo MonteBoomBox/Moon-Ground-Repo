@@ -8,7 +8,7 @@ public class Portals : MonoBehaviour
 
     public float distanceToPortal = 0.3f;
 
-    public GameObject Player;
+    GameObject Player;
     public GameObject bullet;
 
     string OutName = "Out";
@@ -20,6 +20,11 @@ public class Portals : MonoBehaviour
     private float invisibleAlphaValue = 0f;
 
     public float rotateSpeed = 15f;
+
+    public void Start()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+    }
 
     public void OnTriggerEnter2D(Collider2D HitInfo)
     {
