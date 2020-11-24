@@ -5,9 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    PlayerController controller;
+    private int levelToLoad;
+
     public void PlayGame()
     {
-        BroadcastMessage("LoadPlayerData");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         PauseMenu.GameIsPaused = false;
     }
 
@@ -20,4 +23,13 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
+
+    //public void LoadPlayerLevel()
+    //{
+    //    PlayerData data = SaveSystem.LoadPlayer();
+
+    //    levelToLoad = controller.CurrentLevel;
+    //    controller.CurrentLevel = data.currentLevel;
+    //    SceneManager.LoadScene(levelToLoad);
+    //}
 }

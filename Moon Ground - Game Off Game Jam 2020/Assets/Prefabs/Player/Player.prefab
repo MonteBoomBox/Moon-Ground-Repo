@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 8023618251796192152}
   - component: {fileID: 8023618251796192155}
   - component: {fileID: 435190980033914142}
+  - component: {fileID: 5307480308645026048}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -255,6 +256,8 @@ MonoBehaviour:
   PlayerHealth: {fileID: 435190980033914142}
   playerAnimator: {fileID: 8023618251796192159}
   killDelay: 0.5
+  CurrentLevel: 0
+  currentShockballAMMO: 0
 --- !u!114 &435190980033914142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +279,18 @@ MonoBehaviour:
   HealthDisplay: {fileID: 0}
   HitEffect: {fileID: 5830325778583823445, guid: 0cf04109329ec4a7cbfa94af198ae9d1,
     type: 3}
+--- !u!114 &5307480308645026048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8023618251796192154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42152e67edf1e4d7fafab71711c849b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &594655080347098211
 PrefabInstance:
   m_ObjectHideFlags: 0

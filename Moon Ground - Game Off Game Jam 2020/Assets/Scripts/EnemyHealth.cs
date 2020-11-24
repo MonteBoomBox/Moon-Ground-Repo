@@ -17,7 +17,7 @@ public class EnemyHealth : MonoBehaviour
     public SpriteRenderer ObjRenderer;
     Color defaultColor;
 
-
+    public ParticleSystem Hit;
 
 
     void Start()
@@ -31,12 +31,29 @@ public class EnemyHealth : MonoBehaviour
         if (hitInfo.gameObject.CompareTag("Bullet"))
         {
             if (!isHit)
-            {
+            {                
                 isHit = true;
                 StartCoroutine("SwitchColor");
                 TakeDamage(damageUnit);
             }            
         }
+
+        else if (hitInfo.gameObject.CompareTag("EnemyBullet"))
+        {
+            if (!isHit)
+            {
+                isHit = true;
+                StartCoroutine("SwitchColor");
+                TakeDamage(damageUnit);
+            }
+        }
+    }
+
+    public void PlayHitEffect()
+    {
+        FindObjectOfType<AudioManager>().PlaySound("ReflectorClank");
+        ParticleSystem hit = Instantiate(Hit, transform.position, Quaternion.identity);
+        hit.Play();
     }
 
     public void Update()
@@ -53,6 +70,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        PlayHitEffect();
         currentHealth -= damage;
     }
 

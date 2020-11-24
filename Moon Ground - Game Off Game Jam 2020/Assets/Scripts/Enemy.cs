@@ -31,18 +31,11 @@ public class Enemy : MonoBehaviour
     {
         if (Time.time > nextFire)
         {
-            Shoot();            
+            GetComponentInChildren<EnemyShoot>().Shoot();
             nextFire = Time.time + fireRate;
         }
     }
 
-    public void Shoot()
-    {
-        FindObjectOfType<AudioManager>().PlaySound("BlasterShoot");
-        GameObject newEnemyBullet = Instantiate(enemyBullet, transform.position, Quaternion.identity);
-        Rigidbody2D rb = newEnemyBullet.GetComponent<Rigidbody2D>();
-        target = GameObject.FindGameObjectWithTag("Player");
-        moveDirection = (target.transform.position - newEnemyBullet.transform.position).normalized * moveSpeed;
-        rb.velocity = new Vector2(moveDirection.x, moveDirection.y);
-    }
+    
+    
 }

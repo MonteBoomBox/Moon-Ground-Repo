@@ -6,24 +6,27 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Levels/Main Menu.unity
+    path: Assets/Levels/Menus/Main Menu.unity
     guid: 2224b09af475343718051f552fe802f5
   - enabled: 1
-    path: Assets/Levels/Gas Pump Mechanic.unity
-    guid: 6ed4ab3b7fb8d48c298f6de1ff791787
+    path: Assets/Levels/Menus/Settings Menu.unity
+    guid: 863f3522c20ae4ee18398757a2568d19
   - enabled: 1
-    path: Assets/Levels/Example.unity
-    guid: 39ec1d8695822433ebb9b48bccab8fbb
+    path: Assets/Levels/Introductory Levels/Walking-Jumping Mechanic.unity
+    guid: 7ba338ab5f04c45909bb6f42d4eb6052
   - enabled: 1
-    path: Assets/Levels/Lava Mechanic.unity
-    guid: 7dd2a9871584346cfa8f00faaf6bd5c1
+    path: Assets/Levels/Introductory Levels/Gravity Inversion Mechanic.unity
+    guid: 0408f6e1b7ce348d48a9fa6934c26090
   - enabled: 1
-    path: Assets/Levels/Enemy Mechanic.unity
+    path: Assets/Levels/Introductory Levels/Enemy Mechanic.unity
     guid: d19a5414d21464fbda0cfefa93370793
   - enabled: 1
-    path: Assets/Levels/Portal Mechanic.unity
-    guid: 2900c9094e1c94686b6be513e30839c8
+    path: Assets/Levels/Introductory Levels/Gas Pump Mechanic.unity
+    guid: 6ed4ab3b7fb8d48c298f6de1ff791787
   - enabled: 1
-    path: Assets/Levels/Settings Menu.unity
-    guid: 863f3522c20ae4ee18398757a2568d19
+    path: Assets/Levels/Introductory Levels/Lava Mechanic.unity
+    guid: 7dd2a9871584346cfa8f00faaf6bd5c1
+  - enabled: 1
+    path: Assets/Levels/Introductory Levels/Portal Mechanic.unity
+    guid: 2900c9094e1c94686b6be513e30839c8
   m_configObjects: {}

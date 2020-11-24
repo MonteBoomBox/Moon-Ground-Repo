@@ -19,6 +19,7 @@ TagManager:
   - Target
   - GasBubble
   - Colour+InOROut
+  - Obstacle
   layers:
   - Default
   - TransparentFX

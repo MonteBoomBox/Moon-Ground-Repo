@@ -77,10 +77,10 @@ public class Health : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            TakeDamage(10);
-        }
+        //if (Input.GetKeyDown(KeyCode.Backspace)) // Debug Key for Testing Damage Function
+        //{
+        //    TakeDamage(10);
+        //}
 
         CurrentHealthDisplay.text = currentHealth.ToString();
 

@@ -23,14 +23,6 @@ public class Bullet : MonoBehaviour
             FindObjectOfType<AudioManager>().PlaySound("ReflectorClank");            
         }
 
-        else if (HitInfo.gameObject.CompareTag("Player"))
-        {
-            GameObject Player = GameObject.FindGameObjectWithTag("Player");
-            Health playerHealth = Player.GetComponent<Health>();
-            playerHealth.TakeDamage(playerDamage);
-            Destroy(gameObject);
-        }
-
         else if (HitInfo.gameObject.CompareTag("Enemy"))
         {
             GameObject Enemy = GameObject.FindGameObjectWithTag("Enemy");

@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float JumpForce;
     private float moveInput;
+    private int playerDamage = 10;
 
 
     private Rigidbody2D rb;
@@ -24,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     InvertGravity Gravity;
     public Health PlayerHealth;
-    Blaster ShockBallAmmo;
+    int ShockBallAmmo;
 
     public Animator playerAnimator;
 
@@ -32,8 +33,13 @@ public class PlayerController : MonoBehaviour
 
     public float killDelay = 0.5f;
 
-    public string CurrentLevel;
+    // For Player Data
+    public int CurrentLevel;
     public int currentShockballAMMO;
+
+    Blaster SHOCKBALLAMMO;
+
+    
 
     //public GameObject LavaDropPrefab;
     //public float respawnTime;
@@ -46,12 +52,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         Gravity = GetComponent<InvertGravity>();
         ScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-
-        CurrentLevel = SceneManager.GetActiveScene().buildIndex.ToString();
-        currentShockballAMMO = ShockBallAmmo.currentShockBallAmmo;
-        //RandomSpawnPos = new Vector2(Random.Range(25, 50), -13.7f);
-
-        LoadPlayerData();
+        //RandomSpawnPos = new Vector2(Random.Range(25, 50), -13.7f);        
     }
 
     public void FixedUpdate()
@@ -76,6 +77,8 @@ public class PlayerController : MonoBehaviour
 
         
     }
+
+    
 
     public void Update()
     {
@@ -127,6 +130,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("You Finished!");
             FindObjectOfType<AudioManager>().PlaySound("WinSound");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
         else if (HitInfo.gameObject.CompareTag("Respawn"))
@@ -140,6 +144,13 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("You fell in the lava!");
             SceneManager.LoadScene(1);
+        }
+
+        else if (HitInfo.gameObject.CompareTag("EnemyBullet"))
+        {
+            Health health = GetComponent<Health>();
+            health.TakeDamage(playerDamage);
+            Destroy(gameObject);
         }
     }
 
@@ -180,26 +191,23 @@ public class PlayerController : MonoBehaviour
         {
             FindObjectOfType<AudioManager>().PlaySound("PlayerStep2");  
         }
-    }
-
-    public void OnApplicationQuit()
-    {
-        SavePlayerData();
     } 
 
-    public void SavePlayerData()
-    {
-        SaveSystem.SavePlayer(this);
-        Debug.Log("Player data saved");
-    }
+    //public void SavePlayerData()
+    //{
+    //    CurrentLevel = SceneManager.GetActiveScene().buildIndex;
+    //    SaveSystem.SavePlayer(this);
+    //    Debug.Log("Player data saved");
+    //}
 
-    public void LoadPlayerData()
-    {
-        PlayerData data = SaveSystem.LoadPlayer();
+    //public void LoadPlayerData()
+    //{
+    //    PlayerData data = SaveSystem.LoadPlayer();
 
-        CurrentLevel = data.currentLevel;
-        currentShockballAMMO = data.currentShockBallAmmo;
-    }
+    //    currentShockballAMMO = data.currentShockBallAmmo;
+    //}
+
+    
 
     //IEnumerator LavaDropsWave()
     //{

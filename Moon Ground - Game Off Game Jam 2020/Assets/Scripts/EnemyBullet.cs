@@ -31,22 +31,27 @@ public class EnemyBullet : MonoBehaviour
     {
         GameObject Obj = HitInfo.gameObject;
 
-        if (HitInfo.gameObject.CompareTag("Player"))
-        {
-            Health health = target.GetComponent<Health>();
-            health.TakeDamage(playerDamage);
-            Destroy(gameObject);
-        }
-
-        else if (HitInfo.gameObject.CompareTag("Ground"))
+        if (HitInfo.gameObject.CompareTag("Ground"))
         {
             Destroy(gameObject);
         }
 
         else if (HitInfo.gameObject.CompareTag("Reflector"))
         {
-            GetComponent<CircleCollider2D>().isTrigger = false;
+            GetComponent<BoxCollider2D>().isTrigger = false;
             FindObjectOfType<AudioManager>().PlaySound("ReflectorClank");
+        }
+
+        else if (HitInfo.gameObject.CompareTag("Player"))
+        {
+            Health playerHealth = target.GetComponent<Health>();
+            playerHealth.TakeDamage(playerDamage);
+            Destroy(gameObject);
+        }
+
+        else if (HitInfo.gameObject.CompareTag("Enemy"))
+        {
+            StartCoroutine(SwitchCollider());
         }
     }
 
@@ -84,4 +89,9 @@ public class EnemyBullet : MonoBehaviour
         Destroy(gameObject);
     }
 
+    IEnumerator SwitchCollider()
+    {
+        yield return new WaitForSeconds(0.5f);
+        GetComponent<BoxCollider2D>().isTrigger = false;
+    }
 }

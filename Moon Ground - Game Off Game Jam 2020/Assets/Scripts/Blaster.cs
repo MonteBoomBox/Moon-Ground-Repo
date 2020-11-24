@@ -24,7 +24,7 @@ public class Blaster : MonoBehaviour
     [HideInInspector]
     public int currentBulletAmmo;
 
-
+    [HideInInspector]
     public int currentShockBallAmmo;
 
     public float reloadTime = 2f;
@@ -47,7 +47,6 @@ public class Blaster : MonoBehaviour
         currentBulletAmmo = maxBulletAmmo;
         CurrentBulletAmmoCount = BulletAmmoDisplay.GetComponent<TextMeshProUGUI>();
         CurrentShockBallAmmoCount = ShockBallAmmoDisplay.GetComponent<TextMeshProUGUI>();
-        currentShockBallAmmo = 0;
     }
 
     public void Update()
@@ -57,6 +56,7 @@ public class Blaster : MonoBehaviour
             CheckAmmoChange();
             DisplayCurrentBulletAmmo();
             DisplayCurrentShockBallAmmo();
+            ClampBlasterRotation();
 
             if (isReloading)
             {
@@ -71,7 +71,6 @@ public class Blaster : MonoBehaviour
 
             if (currentShockBallAmmo <= 0)
             {
-                Debug.Log("You ran out of Ammo!");
                 SwitchAmmoToBullet();
             }
 
@@ -82,6 +81,11 @@ public class Blaster : MonoBehaviour
                 Shoot();
             }
         }        
+    }
+
+    public void ClampBlasterRotation()
+    {
+        Mathf.Clamp(transform.rotation.z, 0f, 180f);
     }
 
     public void DisplayCurrentBulletAmmo()
