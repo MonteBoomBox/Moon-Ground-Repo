@@ -51,7 +51,9 @@ public class EnemyBullet : MonoBehaviour
 
         else if (HitInfo.gameObject.CompareTag("Enemy"))
         {
-            StartCoroutine(SwitchCollider());
+            EnemyHealth enemy = Obj.GetComponent<EnemyHealth>();
+            enemy.TakeDamage(enemyDamage);
+            Destroy(gameObject);
         }
     }
 
@@ -87,11 +89,5 @@ public class EnemyBullet : MonoBehaviour
     public void OnBecameInvisible()
     {
         Destroy(gameObject);
-    }
-
-    IEnumerator SwitchCollider()
-    {
-        yield return new WaitForSeconds(0.5f);
-        GetComponent<BoxCollider2D>().isTrigger = false;
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyShoot : MonoBehaviour
 {
     public GameObject enemyBullet;
-    GameObject target;
+    public GameObject target;
     Vector2 moveDirection;
     GameObject newEnemyBullet;
 
@@ -21,7 +21,6 @@ public class EnemyShoot : MonoBehaviour
 
     public void Update()
     {
-        target = GameObject.FindGameObjectWithTag("Player");
         RotateBlaster();
     }
 

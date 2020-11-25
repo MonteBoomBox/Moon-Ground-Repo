@@ -12,6 +12,8 @@ public class GasPump : MonoBehaviour
 
     public float moveSpeed;
 
+    public GasCount gasCount;
+
     //[SerializeField]
     //private Transform[] waypoints;
     //private int waypointIndex = 0;
@@ -37,15 +39,19 @@ public class GasPump : MonoBehaviour
         {
             Move();
 
-            if (newGasBubble.transform.position == target.position)
+            if (newGasBubble.transform.position.x == target.position.x && newGasBubble.transform.position.y == target.position.y)
             {
-                Debug.Log("Destination reached!");
                 movementStarted = false;
-                Destroy(newGasBubble); 
+                gasCount.IncrementGasCount();
+                Debug.Log("Destination reached!");
+                Destroy(newGasBubble);
+
             }
         }
 
         
+
+
     }
 
     //public void RandomizeMotion()

@@ -21,12 +21,15 @@ EditorBuildSettings:
     path: Assets/Levels/Introductory Levels/Enemy Mechanic.unity
     guid: d19a5414d21464fbda0cfefa93370793
   - enabled: 1
-    path: Assets/Levels/Introductory Levels/Gas Pump Mechanic.unity
-    guid: 6ed4ab3b7fb8d48c298f6de1ff791787
+    path: Assets/Levels/Introductory Levels/ShockBall Mechanic.unity
+    guid: c3e13b35230a64a48bf24c5d87c843e1
   - enabled: 1
     path: Assets/Levels/Introductory Levels/Lava Mechanic.unity
     guid: 7dd2a9871584346cfa8f00faaf6bd5c1
   - enabled: 1
     path: Assets/Levels/Introductory Levels/Portal Mechanic.unity
     guid: 2900c9094e1c94686b6be513e30839c8
+  - enabled: 1
+    path: Assets/Levels/Introductory Levels/Gas Pump Mechanic.unity
+    guid: 6ed4ab3b7fb8d48c298f6de1ff791787
   m_configObjects: {}
