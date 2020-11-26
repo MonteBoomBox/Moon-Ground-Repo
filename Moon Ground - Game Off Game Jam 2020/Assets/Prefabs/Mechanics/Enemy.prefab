@@ -160,12 +160,12 @@ Transform:
   m_GameObject: {fileID: 1188562426744656218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 30.1, y: -3.64, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 4.9336}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 4.9336}
   m_Children:
   - {fileID: 1188562425996186129}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!212 &1188562426744656222
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -282,7 +282,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.6583056, y: 0}
+  m_Offset: {x: -0.8, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}

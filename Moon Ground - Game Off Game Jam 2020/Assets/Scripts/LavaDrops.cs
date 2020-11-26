@@ -55,11 +55,6 @@ public class LavaDrops : MonoBehaviour
         }
     }
 
-    public void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-    }
-
     public void SpawnLavaDrop()
     {
         newLavaDrop = Instantiate(lavaDropPrefab) as GameObject;

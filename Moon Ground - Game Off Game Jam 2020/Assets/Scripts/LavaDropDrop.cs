@@ -12,8 +12,7 @@ public class LavaDropDrop : MonoBehaviour
 
     public void Start(){
 
-        PlayerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
-        
+        PlayerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();        
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -41,6 +40,7 @@ public class LavaDropDrop : MonoBehaviour
 
         else if (collision.gameObject.CompareTag("Enemy"))
         {
+            enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
             enemyHealth.TakeDamage(enemyDamage);
         }
     }
