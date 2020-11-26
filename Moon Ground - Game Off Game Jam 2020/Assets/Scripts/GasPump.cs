@@ -48,10 +48,11 @@ public class GasPump : MonoBehaviour
 
             }
         }
+    }
 
-        
-
-
+    public void Move()
+    {
+        newGasBubble.transform.position = Vector2.MoveTowards(newGasBubble.transform.position, target.position, moveSpeed * Time.deltaTime);
     }
 
     //public void RandomizeMotion()
@@ -69,10 +70,7 @@ public class GasPump : MonoBehaviour
     //    rb.AddForce(RandomizedMotion * moveSpeed);
     //}
 
-    public void Move()
-    {
-        newGasBubble.transform.position = Vector2.MoveTowards(newGasBubble.transform.position, target.position, moveSpeed * Time.deltaTime);
-    }
+
 
     //public void MoveGasBubble()
     //{
