@@ -20,6 +20,7 @@ TagManager:
   - GasBubble
   - Colour+InOROut
   - Obstacle
+  - HomingMissile
   layers:
   - Default
   - TransparentFX

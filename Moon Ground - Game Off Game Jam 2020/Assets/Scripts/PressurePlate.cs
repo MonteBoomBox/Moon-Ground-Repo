@@ -15,13 +15,18 @@ public class PressurePlate : MonoBehaviour
     GasPump PumpMethod;
 
     private bool isPressed;
+    private bool hasStartedCoroutine;
+
+    Coroutine GasPumping;
+
+    public GameObject GasParent;
 
     public void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         PressedState = new Vector2(transform.position.x, transform.position.y + offset);
         UnPressedState = new Vector2(transform.position.x, transform.position.y - offset);
-        PumpMethod = GetComponentInParent<GasPump>();
+        PumpMethod = GasParent.GetComponent<GasPump>();
         isPressed = false;
     }
 
@@ -32,9 +37,18 @@ public class PressurePlate : MonoBehaviour
             if (!isPressed)
             {
                 isPressed = true;
-                StartCoroutine(StartGasPump());
-            }            
+                trigger.gameObject.transform.SetParent(transform);
+                GasPumping = StartCoroutine(StartGasPump());
+            }
+                              
         }
+    }
+
+    public void OnCollisionExit2D(Collision2D collision)
+    {
+        isPressed = false;
+        collision.gameObject.transform.SetParent(null);
+        StopCoroutine(GasPumping);
     }
 
     public void Update()
@@ -43,7 +57,12 @@ public class PressurePlate : MonoBehaviour
         {
             transform.position = UnPressedState;
         }
-        
+
+        else if (isPressed)
+        {
+            transform.position = PressedState;
+        }
+
     }
 
     IEnumerator StartGasPump()
@@ -52,5 +71,6 @@ public class PressurePlate : MonoBehaviour
         yield return new WaitForSeconds(GasPumpTime);
         PumpMethod.SpawnGasBubble();
         isPressed = false;
+        
     }
 }

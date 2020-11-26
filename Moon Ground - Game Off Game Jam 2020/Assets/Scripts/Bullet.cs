@@ -30,6 +30,11 @@ public class Bullet : MonoBehaviour
             enemyHealth.TakeDamage(enemyDamage);
             Destroy(gameObject);
         }
+
+        else if (HitInfo.gameObject.CompareTag("HomingMissile"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void Update()
