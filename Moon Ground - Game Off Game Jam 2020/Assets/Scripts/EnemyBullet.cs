@@ -48,13 +48,6 @@ public class EnemyBullet : MonoBehaviour
             playerHealth.TakeDamage(playerDamage);
             Destroy(gameObject);
         }
-
-        else if (HitInfo.gameObject.CompareTag("Enemy"))
-        {
-            EnemyHealth enemy = Obj.GetComponent<EnemyHealth>();
-            enemy.TakeDamage(enemyDamage);
-            Destroy(gameObject);
-        }
     }
 
     public void OnCollisionEnter2D(Collision2D BulletCollider) // When the bullet touches anything that is tagged as "Ground", it will increment Boucne Counter by 1

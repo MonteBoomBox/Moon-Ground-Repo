@@ -145,13 +145,6 @@ public class PlayerController : MonoBehaviour
             Debug.Log("You fell in the lava!");
             SceneManager.LoadScene(1);
         }
-
-        else if (HitInfo.gameObject.CompareTag("EnemyBullet"))
-        {
-            Health health = GetComponent<Health>();
-            health.TakeDamage(playerDamage);
-            Destroy(gameObject);
-        }
     }
 
     public void LoadSameLevel()

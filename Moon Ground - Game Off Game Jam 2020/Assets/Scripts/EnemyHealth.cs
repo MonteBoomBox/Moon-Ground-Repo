@@ -38,16 +38,6 @@ public class EnemyHealth : MonoBehaviour
                 TakeDamage(damageUnit);
             }            
         }
-
-        else if (hitInfo.gameObject.CompareTag("EnemyBullet"))
-        {
-            if (!isHit)
-            {
-                isHit = true;
-                StartCoroutine("SwitchColor");
-                TakeDamage(damageUnit);
-            }
-        }
     }
 
     public void PlayHitEffect()

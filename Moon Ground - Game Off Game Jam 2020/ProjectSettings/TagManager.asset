@@ -21,6 +21,10 @@ TagManager:
   - Colour+InOROut
   - Obstacle
   - HomingMissile
+  - GreenIn
+  - GreenOut
+  - YellowIn
+  - YellowOut
   layers:
   - Default
   - TransparentFX

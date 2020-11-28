@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
 
     public float moveSpeed = 5f;
 
+    public bool inRange;
+
     GameObject target;
     Vector2 moveDirection;
     Rigidbody2D rb;

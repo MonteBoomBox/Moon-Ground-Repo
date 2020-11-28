@@ -37,25 +37,23 @@ public class Health : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D Hit)
     {
-        if (Hit.gameObject.CompareTag("Bullet"))
-        {
-            if (!isHit)
-            {
-                isHit = true;
-                StartCoroutine(SwitchColor());
-                TakeDamage(damageUnit);
-            }
-        }
+        //if (Hit.gameObject.CompareTag("Bullet"))
+        //{
+        //    if (!isHit)
+        //    {
+        //        isHit = true;
+        //        TakeDamage(damageUnit);
+        //    }
+        //}
 
-        else if (Hit.gameObject.CompareTag("EnemyBullet"))
-        {
-            if (!isHit)
-            {
-                isHit = true;
-                StartCoroutine(SwitchColor());
-                TakeDamage(damageUnit);
-            }
-        }
+        //else if (Hit.gameObject.CompareTag("EnemyBullet"))
+        //{
+        //    if (!isHit)
+        //    {
+        //        isHit = true;
+        //        TakeDamage(damageUnit);
+        //    }
+        //}
     }
 
     public void TakeDamage(int damage)
@@ -89,7 +87,6 @@ public class Health : MonoBehaviour
 
     public void KillPlayer()
     {
-        Debug.Log("YOU DIED!");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         isDead = false;
     }
