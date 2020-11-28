@@ -27,7 +27,7 @@ public class GasPump : MonoBehaviour
 
     public void SpawnGasBubble()
     {
-        newGasBubble = Instantiate(GasBubblePrefab) as GameObject;
+        newGasBubble = Instantiate(GasBubblePrefab, spawnPoint.position, spawnPoint.rotation) as GameObject;
         movementStarted = true;
 
         //newGasBubble.transform.position = waypoints[waypointIndex].transform.position;

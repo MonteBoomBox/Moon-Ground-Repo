@@ -152,7 +152,7 @@ PrefabInstance:
     - target: {fileID: 8023618251796192157, guid: 496ab5e68897a41eea8dbe9f9ed4d2ef,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.6
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 8023618251796192157, guid: 496ab5e68897a41eea8dbe9f9ed4d2ef,
         type: 3}
@@ -199,6 +199,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8023618251796192157, guid: 496ab5e68897a41eea8dbe9f9ed4d2ef,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8023618251796192157, guid: 496ab5e68897a41eea8dbe9f9ed4d2ef,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5307480308645026048, guid: 496ab5e68897a41eea8dbe9f9ed4d2ef, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 496ab5e68897a41eea8dbe9f9ed4d2ef, type: 3}
@@ -212,12 +222,12 @@ PrefabInstance:
     - target: {fileID: 8376083596245883520, guid: 58f5c30475d184ef88a759c68e8b6aa7,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8376083596245883520, guid: 58f5c30475d184ef88a759c68e8b6aa7,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8376083596918217414, guid: 58f5c30475d184ef88a759c68e8b6aa7,
         type: 3}
@@ -348,6 +358,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Health Bar Display
+      objectReference: {fileID: 0}
+    - target: {fileID: 8376083597086841169, guid: 58f5c30475d184ef88a759c68e8b6aa7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58f5c30475d184ef88a759c68e8b6aa7, type: 3}
@@ -648,6 +663,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ammo Display
       objectReference: {fileID: 0}
+    - target: {fileID: 7701371686916019215, guid: 069815ec93458476a85aef56e02773d7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7701371686916019699, guid: 069815ec93458476a85aef56e02773d7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -811,7 +831,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1006484531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1510,7 +1530,7 @@ PrefabInstance:
     - target: {fileID: 8844199449952013551, guid: 6013df40bb98142d4990f76278b81c98,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.77775
+      value: -7.35
       objectReference: {fileID: 0}
     - target: {fileID: 8844199449952013551, guid: 6013df40bb98142d4990f76278b81c98,
         type: 3}

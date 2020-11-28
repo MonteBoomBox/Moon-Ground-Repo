@@ -18,6 +18,7 @@ public class EnemyHealth : MonoBehaviour
     Color defaultColor;
 
     public ParticleSystem Hit;
+    public GameObject explosionEffect;
 
 
     void Start()
@@ -77,6 +78,7 @@ public class EnemyHealth : MonoBehaviour
     public void Die()
     {
         Debug.Log("Enemy Killed");
+        Instantiate(explosionEffect, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 
