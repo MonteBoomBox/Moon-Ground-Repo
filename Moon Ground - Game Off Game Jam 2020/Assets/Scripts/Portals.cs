@@ -21,9 +21,12 @@ public class Portals : MonoBehaviour
 
     public float rotateSpeed = 15f;
 
+    MemeEntry enterMeme;
+
     public void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+        enterMeme = GetComponent<MemeEntry>();
     }
 
     public void OnTriggerEnter2D(Collider2D HitInfo)
@@ -51,6 +54,7 @@ public class Portals : MonoBehaviour
             var changedPortalTag = PortalTag.Replace("In", "Out");
             GameObject PortalToTeleportTo = GameObject.FindGameObjectWithTag(changedPortalTag);
             destination = PortalToTeleportTo.transform.position;
+            enterMeme.TeleportPlayerToMeme();
         }
 
         else if (PortalTag.Contains(OutName))
@@ -58,6 +62,7 @@ public class Portals : MonoBehaviour
             var changedPortalTag = PortalTag.Replace("Out", "In");
             GameObject PortalToTeleportTo = GameObject.FindGameObjectWithTag(changedPortalTag);
             destination = PortalToTeleportTo.transform.position;
+            enterMeme.TeleportPlayerToGame();
         }
     }
 
@@ -67,6 +72,7 @@ public class Portals : MonoBehaviour
         {
             FadeOutPlayer();
             Player.transform.position = new Vector2(destination.x, destination.y);
+            
             FadeInPlayer();
         }
     }
