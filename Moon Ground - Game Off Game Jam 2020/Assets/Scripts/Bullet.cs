@@ -10,6 +10,9 @@ public class Bullet : MonoBehaviour
     public int playerDamage;
     public int enemyDamage;
 
+    public int BossHeadshotDamage;
+    public int BossBodyDamage;
+
     public void OnTriggerEnter2D(Collider2D HitInfo)
     {
         if (HitInfo.gameObject.CompareTag("Ground"))
@@ -33,6 +36,20 @@ public class Bullet : MonoBehaviour
 
         else if (HitInfo.gameObject.CompareTag("HomingMissile"))
         {
+            Destroy(gameObject);
+        }
+
+        else if (HitInfo.gameObject.CompareTag("Headshot"))
+        {
+            EnemyBossHealth bossHealth = GameObject.FindGameObjectWithTag("Boss").GetComponent<EnemyBossHealth>();
+            bossHealth.TakeHeadshotDamage(BossHeadshotDamage);
+            Destroy(gameObject);
+        }
+
+        else if (HitInfo.gameObject.CompareTag("Body"))
+        {
+            EnemyBossHealth bossHealth = GameObject.FindGameObjectWithTag("Boss").GetComponent<EnemyBossHealth>();
+            bossHealth.TakeBodyDamage(BossBodyDamage);
             Destroy(gameObject);
         }
     }

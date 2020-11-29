@@ -20,10 +20,12 @@ public class HomingMissile : MonoBehaviour
     public int bulletDamage = 10;
 
     public GameObject ExplosionEffect;
+    public GameObject hitEffect;
 
 
     void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         StartCoroutine(AutoDestroyMissile());
@@ -64,6 +66,8 @@ public class HomingMissile : MonoBehaviour
 
         else if (collision.gameObject.CompareTag("Bullet"))
         {
+            Instantiate(hitEffect, transform.position, transform.rotation);
+            FindObjectOfType<AudioManager>().PlaySound("ReflectorClank"); 
             DamageMissile(bulletDamage);
         }
     }

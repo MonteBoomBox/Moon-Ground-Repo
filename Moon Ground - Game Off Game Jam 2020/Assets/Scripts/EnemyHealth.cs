@@ -74,9 +74,18 @@ public class EnemyHealth : MonoBehaviour
     {
         Debug.Log("Enemy Killed");
         Instantiate(explosionEffect, transform.position, transform.rotation);
-        GateManager.GetComponent<GateManagement>().GatePassed += 1;
-        Debug.Log(GateManager.GetComponent<GateManagement>().GatePassed);
-        Destroy(gameObject);
+        FindObjectOfType<AudioManager>().PlaySound("EnemyDeath");
+        if (GameObject.Find("Gates Management"))
+        {
+            GateManager.GetComponent<GateManagement>().GatePassed += 1;
+            Debug.Log(GateManager.GetComponent<GateManagement>().GatePassed);
+        }
+
+        else
+        {
+            Destroy(gameObject);
+        }
+        
     }
 
     IEnumerator SwitchColor()

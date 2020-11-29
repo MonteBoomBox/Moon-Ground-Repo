@@ -30,6 +30,9 @@ TagManager:
   - GateManager
   - OrangeIn
   - OrangeOut
+  - Headshot
+  - Body
+  - Boss
   layers:
   - Default
   - TransparentFX

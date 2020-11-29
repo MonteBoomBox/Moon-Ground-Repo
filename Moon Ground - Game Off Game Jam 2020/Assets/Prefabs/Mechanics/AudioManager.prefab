@@ -121,3 +121,10 @@ MonoBehaviour:
     source: {fileID: 0}
     PlayOnAwake: 0
     Loop: 0
+  - name: EnemyDeath
+    clip: {fileID: 8300000, guid: aaf24d047b4904e9ca8d7a8d1eb23b58, type: 3}
+    volume: 0.4
+    pitch: 1
+    source: {fileID: 0}
+    PlayOnAwake: 0
+    Loop: 0

@@ -117,12 +117,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   rotateSpeed: 200
-  speed: 8
+  speed: 12
   playerDamage: 20
   duration: 7
   maxHealth: 50
   bulletDamage: 10
   ExplosionEffect: {fileID: 6665495466792770321, guid: c86962d28b617458caae0edb6f391062,
+    type: 3}
+  hitEffect: {fileID: 5005008628992647717, guid: 0cf04109329ec4a7cbfa94af198ae9d1,
     type: 3}
 --- !u!68 &6120767188649086879
 EdgeCollider2D:
