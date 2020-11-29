@@ -70,11 +70,18 @@ public class HomingMissile : MonoBehaviour
             FindObjectOfType<AudioManager>().PlaySound("ReflectorClank"); 
             DamageMissile(bulletDamage);
         }
+
+        else if (collision.gameObject.CompareTag("Ground"))
+        {
+            Instantiate(ExplosionEffect, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
     }
 
     IEnumerator AutoDestroyMissile()
     {
         yield return new WaitForSeconds(duration);
+        Instantiate(ExplosionEffect, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 

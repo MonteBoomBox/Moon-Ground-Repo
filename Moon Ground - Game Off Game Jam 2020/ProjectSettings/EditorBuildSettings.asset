@@ -50,4 +50,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Storyline Levels/Level 6.unity
     guid: b76e75119e09b448b91821719a01e7ba
+  - enabled: 1
+    path: Assets/Levels/Storyline Levels/Boss Battle.unity
+    guid: fbd6b35b018544ad79840ec60fb72efe
+  - enabled: 1
+    path: Assets/Levels/Storyline Levels/The End.unity
+    guid: 5c5146502344e4e8a8fd97e60457d6b7
   m_configObjects: {}

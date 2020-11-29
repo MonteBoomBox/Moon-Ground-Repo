@@ -185,7 +185,7 @@ public class PlayerController : MonoBehaviour
         {
             FindObjectOfType<AudioManager>().PlaySound("PlayerStep2");  
         }
-    } 
+    }
 
     //public void SavePlayerData()
     //{
@@ -201,7 +201,7 @@ public class PlayerController : MonoBehaviour
     //    currentShockballAMMO = data.currentShockBallAmmo;
     //}
 
-    
+
 
     //IEnumerator LavaDropsWave()
     //{

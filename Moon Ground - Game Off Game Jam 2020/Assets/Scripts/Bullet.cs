@@ -43,6 +43,7 @@ public class Bullet : MonoBehaviour
         {
             EnemyBossHealth bossHealth = GameObject.FindGameObjectWithTag("Boss").GetComponent<EnemyBossHealth>();
             bossHealth.TakeHeadshotDamage(BossHeadshotDamage);
+            FindObjectOfType<AudioManager>().PlaySound("ReflectorClank");
             Destroy(gameObject);
         }
 
@@ -50,6 +51,7 @@ public class Bullet : MonoBehaviour
         {
             EnemyBossHealth bossHealth = GameObject.FindGameObjectWithTag("Boss").GetComponent<EnemyBossHealth>();
             bossHealth.TakeBodyDamage(BossBodyDamage);
+            FindObjectOfType<AudioManager>().PlaySound("ReflectorClank");
             Destroy(gameObject);
         }
     }

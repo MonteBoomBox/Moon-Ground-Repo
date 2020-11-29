@@ -128,3 +128,17 @@ MonoBehaviour:
     source: {fileID: 0}
     PlayOnAwake: 0
     Loop: 0
+  - name: EnemyBossIntro
+    clip: {fileID: 8300000, guid: 25c1d9eca6b364699956ed4f4703d20f, type: 3}
+    volume: 0.4
+    pitch: 1
+    source: {fileID: 0}
+    PlayOnAwake: 0
+    Loop: 0
+  - name: CreditsMusic
+    clip: {fileID: 8300000, guid: dce73f953cc4c48b08734ff8a81d9650, type: 3}
+    volume: 0.8
+    pitch: 1
+    source: {fileID: 0}
+    PlayOnAwake: 0
+    Loop: 0

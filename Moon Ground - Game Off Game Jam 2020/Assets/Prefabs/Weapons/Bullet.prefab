@@ -119,7 +119,7 @@ MonoBehaviour:
   playerDamage: 10
   enemyDamage: 20
   BossHeadshotDamage: 25
-  BossBodyDamage: 20
+  BossBodyDamage: 250
 --- !u!61 &6679012992689721171
 BoxCollider2D:
   m_ObjectHideFlags: 0

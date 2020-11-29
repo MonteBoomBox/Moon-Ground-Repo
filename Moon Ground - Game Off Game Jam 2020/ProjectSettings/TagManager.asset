@@ -33,6 +33,7 @@ TagManager:
   - Headshot
   - Body
   - Boss
+  - BossFightTrigger
   layers:
   - Default
   - TransparentFX
