@@ -86,8 +86,8 @@ MonoBehaviour:
     source: {fileID: 0}
     PlayOnAwake: 0
     Loop: 0
-  - name: PlayerDeath
-    clip: {fileID: 8300000, guid: 2f764f3182bf6474a8c2553280309a0c, type: 3}
+  - name: LavaDeath
+    clip: {fileID: 8300000, guid: 456ef36cc09094fea81d04759af6919d, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}

@@ -25,6 +25,11 @@ TagManager:
   - GreenOut
   - YellowIn
   - YellowOut
+  - PurpleIn
+  - PurpleOut
+  - GateManager
+  - OrangeIn
+  - OrangeOut
   layers:
   - Default
   - TransparentFX

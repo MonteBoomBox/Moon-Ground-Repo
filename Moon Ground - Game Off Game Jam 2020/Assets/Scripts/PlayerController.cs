@@ -143,6 +143,7 @@ public class PlayerController : MonoBehaviour
         else if (HitInfo.gameObject.CompareTag("Lava"))
         {
             Debug.Log("You fell in the lava!");
+            FindObjectOfType<AudioManager>().PlaySound("LavaDeath");
             SceneManager.LoadScene(1);
         }
     }

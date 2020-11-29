@@ -12,13 +12,18 @@ public class EnemyHealth : MonoBehaviour
     public int damageUnit;
 
     private bool isHit = false;
-    private bool isDead = false;
+    [HideInInspector]
+    public bool isDead = false;
 
     public SpriteRenderer ObjRenderer;
     Color defaultColor;
 
     public ParticleSystem Hit;
     public GameObject explosionEffect;
+
+    public int enemyDead;
+
+    public GameObject GateManager;
 
 
     void Start()
@@ -69,6 +74,8 @@ public class EnemyHealth : MonoBehaviour
     {
         Debug.Log("Enemy Killed");
         Instantiate(explosionEffect, transform.position, transform.rotation);
+        GateManager.GetComponent<GateManagement>().GatePassed += 1;
+        Debug.Log(GateManager.GetComponent<GateManagement>().GatePassed);
         Destroy(gameObject);
     }
 

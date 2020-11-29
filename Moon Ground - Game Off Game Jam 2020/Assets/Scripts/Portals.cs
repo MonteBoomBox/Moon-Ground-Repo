@@ -40,7 +40,7 @@ public class Portals : MonoBehaviour
         else if (HitInfo.gameObject.tag == "Bullet")
         {
             CheckPortalTag();
-            TeleportBullet();
+            TeleportBullet(HitInfo.gameObject);
         }
 
     }
@@ -54,7 +54,7 @@ public class Portals : MonoBehaviour
             var changedPortalTag = PortalTag.Replace("In", "Out");
             GameObject PortalToTeleportTo = GameObject.FindGameObjectWithTag(changedPortalTag);
             destination = PortalToTeleportTo.transform.position;
-            enterMeme.TeleportPlayerToMeme();
+            //enterMeme.TeleportPlayerToMeme();
         }
 
         else if (PortalTag.Contains(OutName))
@@ -62,7 +62,7 @@ public class Portals : MonoBehaviour
             var changedPortalTag = PortalTag.Replace("Out", "In");
             GameObject PortalToTeleportTo = GameObject.FindGameObjectWithTag(changedPortalTag);
             destination = PortalToTeleportTo.transform.position;
-            enterMeme.TeleportPlayerToGame();
+            //enterMeme.TeleportPlayerToGame();
         }
     }
 
@@ -77,10 +77,8 @@ public class Portals : MonoBehaviour
         }
     }
 
-    public void TeleportBullet() // This will teleport the bullet from portal to portal
+    public void TeleportBullet(GameObject bulletFired) // This will teleport the bullet from portal to portal
     {
-        GameObject bulletFired = GameObject.FindGameObjectWithTag("Bullet");
-
         if (Vector2.Distance(transform.position, bulletFired.transform.position) > distanceToPortal)
         {
             bulletFired.transform.position = new Vector2(destination.x, destination.y);
